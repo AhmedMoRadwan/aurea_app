@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'features/home/presentation/screens/home_screen.dart';
+import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
+import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+import 'package:nti_ecommerce_team4/main_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const AureaApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const AureaApp(),
+    ),
+  );
 }
 
 class AureaApp extends StatelessWidget {
@@ -11,9 +18,13 @@ class AureaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
+      home: const MainScreen(),
     );
   }
 }
