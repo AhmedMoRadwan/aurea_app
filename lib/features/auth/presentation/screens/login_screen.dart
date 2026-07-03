@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../home/presentation/screens/home_screen.dart';
+import 'package:nti_ecommerce_team4/main_screen.dart';
 import '../widgets/auth_divider.dart';
 import '../widgets/auth_header.dart';
 import 'package:gap/gap.dart';
@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                 onButtonPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => const MainScreen()),
                   );
                 },
               ),

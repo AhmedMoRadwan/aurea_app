@@ -26,5 +26,5 @@ class AureaApp extends StatelessWidget {
       themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
       home: const AppStartup(),
     );
-  } 
+  }
 }
