@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/add_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/screens/home_screen.dart';
 
 class AdminProductManagement extends StatelessWidget {
@@ -7,16 +8,21 @@ class AdminProductManagement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: CircleBorder(),
+        child: Icon(Icons.add),
+      ),
       drawer: DevDrawer(),
       appBar: AppBar(
-        backgroundColor: AppColors.lightBackground,
+        backgroundColor: theme.scaffoldBackgroundColor,
         iconTheme: IconThemeData(color: AppColors.lightTextMuted),
         title: Text(
           'Products',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
+          style: AppTextStyles.heading2.copyWith(
+            color: theme.colorScheme.onSurface,
           ),
         ),
         actions: [
@@ -35,6 +41,33 @@ class AdminProductManagement extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      backgroundColor: Color(0xffFBF9F9),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            spacing: 6,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "INVENTORY",
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              Text(
+                "24 Items",
+                style: AppTextStyles.heading2.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
+              SizedBox(height: 20),
+              Expanded(child: AddProductGridview()),
+            ],
+          ),
+        ),
       ),
     );
   }
