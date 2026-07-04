@@ -22,6 +22,12 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               //* AuthHeader
+              const Image(
+                image: AssetImage('assets/images/logo.png'),
+                height: 130,
+                width: 130,
+              ),
+
               const AuthHeader(
                 title: 'Welcome Back',
                 subtitle: '''Sign in to continue your luxury shopping

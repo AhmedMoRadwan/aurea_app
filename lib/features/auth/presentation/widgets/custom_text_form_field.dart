@@ -21,7 +21,17 @@ class CustomTextFormField extends StatelessWidget {
         suffixIcon: suffixIcon != null ? Icon(suffixIcon, size: 20) : null,
         labelText: labelText,
         labelStyle: Theme.of(context).textTheme.bodyMedium,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).focusColor, width: 1),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
       ),
     );
   }
