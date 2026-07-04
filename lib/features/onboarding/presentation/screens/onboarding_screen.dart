@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/next_button.dart';
+import '../widgets/number_and_next_button.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -9,7 +12,6 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late PageController _pageController;
-  int _currentPage = 0;
 
   @override
   void initState() {
@@ -25,20 +27,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: PageView(
         controller: _pageController,
         onPageChanged: (index) {
-          setState(() {
-            _currentPage = index;
-          });
+          setState(() {});
         },
         children: [
           OnboardingPage(
             pageNumber: 1,
-            title: 'Discover Luxury Accessories',
+            title: 'Discover  Luxury Accessories',
             description:
-            'Curated collections of the world\'s finest jewelry and accessories.',
+                'Curated collections of the world\'s finest jewelry and accessories.',
             imageUrl: 'assets/jewelry1.png',
             onNext: () {
               _pageController.nextPage(
@@ -50,9 +51,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           OnboardingPage(
             pageNumber: 2,
-            title: 'Discover Luxury Accessories',
+            title: 'Discover  Luxury Accessories',
             description:
-            'Curated collections of the world\'s finest jewelry and accessories.',
+                'Curated collections of the world\'s finest jewelry and accessories.',
             imageUrl: 'assets/jewelry2.png',
             onNext: () {
               _pageController.nextPage(
@@ -66,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             pageNumber: 3,
             title: 'Discover Luxury Accessories',
             description:
-            'Curated collections of the world\'s finest jewelry and accessories.',
+                'Curated collections of the world\'s finest jewelry and accessories.',
             imageUrl: 'assets/jewelry3.png',
             onNext: () {},
             onSkip: () {},
@@ -86,42 +87,40 @@ class OnboardingPage extends StatelessWidget {
   final VoidCallback onSkip;
 
   const OnboardingPage({
-    Key? key,
+    super.key,
     required this.pageNumber,
     required this.title,
     required this.description,
     required this.imageUrl,
     required this.onNext,
     required this.onSkip,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Background Gradient
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                const Color(0xFF3A3A3A),
-                const Color(0xFFF5F1E8),
-              ],
+              colors: [const Color(0xFF3A3A3A), const Color(0xFFF5F1E8)],
               stops: const [0.0, 0.35],
             ),
           ),
         ),
 
-        // Header with Brand and Skip
         Positioned(
           top: 0,
           left: 0,
           right: 0,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 16,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -153,11 +152,9 @@ class OnboardingPage extends StatelessWidget {
           ),
         ),
 
-        // Center Content
         Positioned.fill(
           child: Column(
             children: [
-              // Product Image Area
               Expanded(
                 flex: 2,
                 child: Center(
@@ -177,17 +174,13 @@ class OnboardingPage extends StatelessWidget {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          imageUrl,
-                          fit: BoxFit.cover,
-                        ),
+                        child: Image.asset(imageUrl, fit: BoxFit.cover),
                       ),
                     ),
                   ),
                 ),
               ),
 
-              // Text Content Area
               Expanded(
                 flex: 1,
                 child: Padding(
@@ -196,7 +189,6 @@ class OnboardingPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Title
                       Text(
                         title,
                         style: TextStyle(
@@ -208,7 +200,6 @@ class OnboardingPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
 
-                      // Description
                       Text(
                         description,
                         style: TextStyle(
@@ -226,67 +217,7 @@ class OnboardingPage extends StatelessWidget {
           ),
         ),
 
-        // Bottom Controls
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Page Indicator
-                  Text(
-                    '0${pageNumber} / 03',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF1A1A1A),
-                      letterSpacing: 1,
-                    ),
-                  ),
-
-                  // Next Button
-                  GestureDetector(
-                    onTap: onNext,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 12,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1A1A1A),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        children: [
-                          Text(
-                            'NEXT',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        NumberAndNextButton(pageNumber: pageNumber, onNext: onNext),
       ],
     );
   }
