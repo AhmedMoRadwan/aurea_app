@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/brand_name_skip_button.dart';
 import '../widgets/next_button.dart';
 import '../widgets/number_and_next_button.dart';
 
@@ -111,46 +112,7 @@ class OnboardingPage extends StatelessWidget {
           ),
         ),
 
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 16,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Brand Name
-                  Text(
-                    'AUREA',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFFD4AF37),
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  // Skip Button
-                  GestureDetector(
-                    onTap: onSkip,
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFFB8B8B8),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        BrandNameAndSkipButton(onSkip: onSkip,),
 
         Positioned.fill(
           child: Column(
