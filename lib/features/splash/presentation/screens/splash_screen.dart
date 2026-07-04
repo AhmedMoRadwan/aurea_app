@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/cornerPainter.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -18,7 +20,6 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     )..repeat();
-
 
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
@@ -46,9 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
               child: SizedBox(
                 width: 60,
                 height: 60,
-                child: CustomPaint(
-                  painter: CornerPainter(),
-                ),
+                child: CustomPaint(painter: CornerPainter()),
               ),
             ),
           ),
@@ -60,9 +59,7 @@ class _SplashScreenState extends State<SplashScreen>
               child: SizedBox(
                 width: 60,
                 height: 60,
-                child: CustomPaint(
-                  painter: CornerPainter(isRight: true),
-                ),
+                child: CustomPaint(painter: CornerPainter(isRight: true)),
               ),
             ),
           ),
@@ -72,11 +69,9 @@ class _SplashScreenState extends State<SplashScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   Stack(
                     alignment: Alignment.center,
                     children: [
-
                       Container(
                         width: 140,
                         height: 140,
@@ -150,7 +145,6 @@ class _SplashScreenState extends State<SplashScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -158,25 +152,22 @@ class _SplashScreenState extends State<SplashScreen>
                       animation: _animationController,
                       builder: (context, child) {
                         return Row(
-                          children: List.generate(
-                            3,
-                                (index) {
-                              final delay = index * 0.15;
-                              final position =
-                                  (_animationController.value - delay) % 1.0;
-                              return Container(
-                                margin:
-                                const EdgeInsets.symmetric(horizontal: 6),
-                                width: 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFD4AF37)
-                                      .withOpacity((position * 2 - 1).abs()),
-                                ),
-                              );
-                            },
-                          ),
+                          children: List.generate(3, (index) {
+                            final delay = index * 0.15;
+                            final position =
+                                (_animationController.value - delay) % 1.0;
+                            return Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 6),
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: const Color(
+                                  0xFFD4AF37,
+                                ).withOpacity((position * 2 - 1).abs()),
+                              ),
+                            );
+                          }),
                         );
                       },
                     ),
@@ -204,9 +195,7 @@ class _SplashScreenState extends State<SplashScreen>
               child: SizedBox(
                 width: 60,
                 height: 60,
-                child: CustomPaint(
-                  painter: CornerPainter(isBottom: true),
-                ),
+                child: CustomPaint(painter: CornerPainter(isBottom: true)),
               ),
             ),
           ),
@@ -216,60 +205,4 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-class CornerPainter extends CustomPainter {
-  final bool isRight;
-  final bool isBottom;
 
-  CornerPainter({this.isRight = false, this.isBottom = false});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFFD4AF37)
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-
-    const cornerLength = 15.0;
-
-    if (!isRight && !isBottom) {
-
-      canvas.drawLine(
-        const Offset(0, cornerLength),
-        const Offset(0, 0),
-        paint,
-      );
-      canvas.drawLine(
-        const Offset(0, 0),
-        const Offset(cornerLength, 0),
-        paint,
-      );
-    } else if (isRight && !isBottom) {
-
-      canvas.drawLine(
-        Offset(size.width, cornerLength),
-        Offset(size.width, 0),
-        paint,
-      );
-      canvas.drawLine(
-        Offset(size.width, 0),
-        Offset(size.width - cornerLength, 0),
-        paint,
-      );
-    } else if (!isRight && isBottom) {
-
-      canvas.drawLine(
-        Offset(0, size.height - cornerLength),
-        Offset(0, size.height),
-        paint,
-      );
-      canvas.drawLine(
-        Offset(0, size.height),
-        Offset(cornerLength, size.height),
-        paint,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(CornerPainter oldDelegate) => false;
-}
