@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
-
 import 'package:nti_ecommerce_team4/features/products/presentation/screens/product_details_screen.dart';
 
 class AddProductListview extends StatelessWidget {
@@ -23,7 +21,6 @@ class AddProductListview extends StatelessWidget {
             },
             child: Card(
               margin: EdgeInsets.only(bottom: 16),
-              color: AppColors.lightBg,
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
@@ -72,6 +69,8 @@ class AddProductListview extends StatelessWidget {
                         "assets/icons/delete.svg",
                         height: 20,
                         width: 20,
+                        // ignore: deprecated_member_use
+                        color: theme.iconTheme.color,
                       ),
                     ),
                   ],

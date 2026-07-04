@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/add_product_list_view.dart';
+import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 
 class AdminProductManagement extends StatelessWidget {
   const AdminProductManagement({super.key});
@@ -16,16 +17,15 @@ class AdminProductManagement extends StatelessWidget {
       ),
 
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         backgroundColor: theme.scaffoldBackgroundColor,
-        iconTheme: IconThemeData(color: AppColors.lightTextMuted),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios),
-          style: IconButton.styleFrom(
-            backgroundColor: AppColors.lightBackground,
-          ),
+          icon: Icon(Icons.arrow_back_ios, size: 20),
+          // style: IconButton.styleFrom(),
         ),
         title: Text(
           'Products',
@@ -34,44 +34,37 @@ class AdminProductManagement extends StatelessWidget {
           ),
         ),
         actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 24)),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.search),
-            style: IconButton.styleFrom(
-              backgroundColor: AppColors.lightBackground,
-            ),
+            icon: Icon(Icons.shopping_bag_outlined, size: 24),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.shopping_bag_outlined),
-            style: IconButton.styleFrom(
-              backgroundColor: AppColors.lightBackground,
-            ),
-          ),
+          SizedBox(width: 10),
         ],
       ),
-      backgroundColor: Color(0xffFBF9F9),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: Column(
-            spacing: 6,
+            spacing: 8,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "INVENTORY",
-                style: theme.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.2,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.5,
                 ),
               ),
               Text(
                 "24 Items",
-                style: AppTextStyles.heading2.copyWith(
+                style: AppTextStyles.bodyLarge.copyWith(
                   color: theme.colorScheme.onSurface,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 16),
+
               AddProductListview(),
             ],
           ),

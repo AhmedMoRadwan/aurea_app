@@ -31,13 +31,13 @@ class SectionCard extends StatelessWidget {
           SizedBox(height: 8),
           Card(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16)),
+              borderRadius: BorderRadius.circular(16),
+            ),
             elevation: 2,
             child: Column(children: children),
           ),
         ],
       ),
-      
     );
   }
 }

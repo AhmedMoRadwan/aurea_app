@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatefulWidget {
-  const ProfileHeader({Key? key}) : super(key: key);
+  const ProfileHeader({super.key});
 
   @override
   State<ProfileHeader> createState() => _ProfileHeaderState();
@@ -18,26 +18,34 @@ class _ProfileHeaderState extends State<ProfileHeader> {
             Container(
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
-                color:Colors.white,
-                shape: BoxShape.circle, 
+                color: Colors.white,
+                shape: BoxShape.circle,
               ),
-              child:const CircleAvatar(
+              child: const CircleAvatar(
                 radius: 50,
-              backgroundImage: AssetImage("assets/images/my.png"),
-              )
+                backgroundImage: AssetImage("assets/images/user5.jpg"),
+              ),
             ),
             CircleAvatar(
               radius: 15,
               backgroundColor: const Color(0xFFD4AF37),
-              child: const Icon(Icons.edit, size: 15, color: const Color(0xFF554300)),
+              child: const Icon(
+                Icons.edit,
+                size: 15,
+                color: const Color(0xFF554300),
+              ),
             ),
           ],
         ),
         const SizedBox(height: 10),
-        const Text("Aurelian Vance",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600)),
-        Text("aurelian.vance@aurea.com",
-            style: TextStyle(color: Colors.grey[700])),
+        const Text(
+          "Aurelian Vance",
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+        ),
+        Text(
+          "aurelian.vance@aurea.com",
+          style: TextStyle(color: Colors.grey[700]),
+        ),
       ],
     );
   }

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 
-class SectionCard extends StatefulWidget {
-  
+class SectionCard extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
   const SectionCard({super.key, required this.title, required this.children});
 
-  @override
-  State<SectionCard> createState() => _SectionCardState();
-}
-
-class _SectionCardState extends State<SectionCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,21 +14,19 @@ class _SectionCardState extends State<SectionCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-             Text(
-              widget.title.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: const Color(0xFFD4AF37),
-              ),
-            ),
-          
+          Text(
+            title.toUpperCase(),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: AppColors.gold),
+          ),
           const SizedBox(height: 8),
           Card(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16)),
+              borderRadius: BorderRadius.circular(16),
+            ),
             elevation: 2,
-            child: Column(children: widget.children),
+            child: Column(children: children),
           ),
         ],
       ),
@@ -48,18 +41,18 @@ class CustomListTile extends StatelessWidget {
   final Widget? trailing;
 
   const CustomListTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     this.subtitle,
     this.trailing,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-         const SizedBox(height: 10),
+        const SizedBox(height: 10),
         ListTile(
           leading: Icon(icon, color: const Color(0xFFD4AF37)),
           title: Text(title),
@@ -67,32 +60,7 @@ class CustomListTile extends StatelessWidget {
           trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 16),
         ),
         const SizedBox(height: 10),
-         
       ],
     );
   }
 }
-
-class LogoutButton extends StatelessWidget {
-  const LogoutButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xffE9E8E7),
-        foregroundColor:  const Color(0xffBA1A1A),
-        minimumSize: const Size(double.infinity, 50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      onPressed: () {},
-      icon: const Icon(Icons.logout),
-      label: const Text("Logout"),
-    );
-  }
-}
-
-
-  
