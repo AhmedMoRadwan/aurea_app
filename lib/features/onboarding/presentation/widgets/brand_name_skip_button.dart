@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:nti_ecommerce_team4/features/onboarding/presentation/widgets/skip_button.dart';
 
 class BrandNameAndSkipButton extends StatelessWidget {
   const BrandNameAndSkipButton({super.key,required this.onSkip});
@@ -30,17 +31,7 @@ class BrandNameAndSkipButton extends StatelessWidget {
                 ),
               ),
 
-              GestureDetector(
-                onTap: onSkip,
-                child: Text(
-                  'Skip',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xFFB8B8B8),
-                  ),
-                ),
-              ),
+             SkipButton(onSkip: onSkip),
             ],
           ),
         ),
