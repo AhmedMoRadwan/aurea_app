@@ -10,22 +10,18 @@ class Textfield extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xffFFFFFF),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Color(0xffFFFFFF)),
         ),
 
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Color(0xffFFFFFF)),
         ),
 
-        prefixIcon: Icon(icon,size: 22,),suffixIconColor: Color(0xff7F7663),
+        prefixIcon: Icon(icon, size: 20),
         hint: Text(
           hint,
           style: TextStyle(
-            color: Color(0xff7f766399),
             fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: FontWeight.w400,

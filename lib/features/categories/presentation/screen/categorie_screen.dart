@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widget/collections_gridview.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widget/textfield.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
+import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 
 class CategorieScreen extends StatelessWidget {
   const CategorieScreen({super.key});
@@ -9,36 +11,41 @@ class CategorieScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFBF9F9),
       drawer: const DevDrawer(),
 
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Color(0xff735C00)),
-        backgroundColor: Color(0xffFBF9F9),
-        surfaceTintColor: Colors.white,
-        elevation: 1,
-
-        bottom: PreferredSize(preferredSize: Size.fromHeight(1), child: Container(
-          height: 1,
-          color: Color(0xffF7F2E6),
-        )),
-
-        title: CircleAvatar(
-          radius: 18,
-          backgroundImage: AssetImage('assets/images/Aurea_logo.jpg'),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(2),
+          child: Container(height: 1, color: Colors.grey.shade400),
         ),
-        centerTitle: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).iconTheme.color,
+          size: 24,
+        ),
 
+        scrolledUnderElevation: 0,
+        shadowColor: Colors.transparent,
+
+        // title: CircleAvatar(
+        //   radius: 18,
+        //   backgroundImage: AssetImage('assets/images/Aurea_logo.jpg'),
+        // ),
+        // centerTitle: true,
+        title: Text(
+          "AUREA",
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            color: AppColors.gold,
+            fontFamily: 'PlayfairDisplay',
+          ),
+        ),
         actions: [
           Stack(
             clipBehavior: Clip.none,
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.shopping_bag_outlined,
-                  size: 28,
-                ),
+                icon: Icon(Icons.shopping_bag_outlined, size: 28),
               ),
 
               Positioned(
@@ -47,8 +54,8 @@ class CategorieScreen extends StatelessWidget {
                 child: Container(
                   width: 16,
                   height: 16,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFD4AF37),
+                  decoration: BoxDecoration(
+                    color: AppColors.gold,
                     shape: BoxShape.circle,
                   ),
                   child: Center(
@@ -66,7 +73,7 @@ class CategorieScreen extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(width: 8),
+          const SizedBox(width: 10),
         ],
       ),
 
@@ -77,11 +84,9 @@ class CategorieScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 15,
             children: [
-              SizedBox(height: 15),
               Text(
                 'Collections',
                 style: TextStyle(
-                  color: Color(0xff1B1C1C),
                   fontFamily: 'PlayfairDisplay',
                   fontWeight: FontWeight.w600,
                   fontSize: 28,
@@ -91,7 +96,6 @@ class CategorieScreen extends StatelessWidget {
               Textfield(icon: Icons.search, hint: 'Search our archives...'),
 
               SizedBox(height: 5),
-
               Expanded(child: CollectionsGridView()),
             ],
           ),
