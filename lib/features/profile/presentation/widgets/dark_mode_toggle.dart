@@ -26,7 +26,7 @@ class _DarkModeToggleState extends State<DarkModeToggle> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppColors.gold.withValues(alpha: 0.1),
+                  color: AppColors.gold.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(

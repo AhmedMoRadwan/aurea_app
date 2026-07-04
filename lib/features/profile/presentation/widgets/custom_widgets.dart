@@ -67,6 +67,7 @@ class CustomListTile extends StatelessWidget {
           trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 16),
         ),
         const SizedBox(height: 10),
+         
       ],
     );
   }
@@ -93,21 +94,5 @@ class LogoutButton extends StatelessWidget {
   }
 }
 
-class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: 3,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.category), label: "Categories"),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ],
-    );
-  }
-}
+  
