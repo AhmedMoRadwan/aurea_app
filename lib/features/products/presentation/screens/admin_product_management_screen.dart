@@ -46,26 +46,28 @@ class AdminProductManagement extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Column(
-            spacing: 6,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "INVENTORY",
-                style: theme.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.2,
+          child: Expanded(
+            child: Column(
+              spacing: 6,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "INVENTORY",
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1.2,
+                  ),
                 ),
-              ),
-              Text(
-                "24 Items",
-                style: AppTextStyles.heading2.copyWith(
-                  color: theme.colorScheme.onSurface,
+                Text(
+                  "24 Items",
+                  style: AppTextStyles.heading2.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Expanded(child: AddProductGridview()),
-            ],
+                SizedBox(height: 20),
+                AddProductListview(),
+              ],
+            ),
           ),
         ),
       ),
