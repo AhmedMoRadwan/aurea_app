@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/add_product_gridview.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/screens/home_screen.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/add_product_list_view.dart';
 
 class AdminProductManagement extends StatelessWidget {
   const AdminProductManagement({super.key});
@@ -15,10 +14,19 @@ class AdminProductManagement extends StatelessWidget {
         shape: CircleBorder(),
         child: Icon(Icons.add),
       ),
-      drawer: DevDrawer(),
+
       appBar: AppBar(
         backgroundColor: theme.scaffoldBackgroundColor,
         iconTheme: IconThemeData(color: AppColors.lightTextMuted),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+          style: IconButton.styleFrom(
+            backgroundColor: AppColors.lightBackground,
+          ),
+        ),
         title: Text(
           'Products',
           style: AppTextStyles.heading2.copyWith(
@@ -46,28 +54,26 @@ class AdminProductManagement extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Expanded(
-            child: Column(
-              spacing: 6,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "INVENTORY",
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 1.2,
-                  ),
+          child: Column(
+            spacing: 6,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "INVENTORY",
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.2,
                 ),
-                Text(
-                  "24 Items",
-                  style: AppTextStyles.heading2.copyWith(
-                    color: theme.colorScheme.onSurface,
-                  ),
+              ),
+              Text(
+                "24 Items",
+                style: AppTextStyles.heading2.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
-                SizedBox(height: 20),
-                AddProductListview(),
-              ],
-            ),
+              ),
+              SizedBox(height: 20),
+              AddProductListview(),
+            ],
           ),
         ),
       ),
