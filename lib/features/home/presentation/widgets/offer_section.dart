@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 
 class OfferSection extends StatelessWidget {
   const OfferSection({super.key});
@@ -40,7 +41,7 @@ class OfferSection extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 letterSpacing: 1.4,
-                                color: Color(0xffFFFFFF),
+                                color: AppColors.darkText,
                                 fontFamily: 'Inter',
                               ),
                             ),
@@ -52,7 +53,7 @@ OFF''',
                                 fontSize: 48,
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: -0.96,
-                                color: Color(0xffFFFFFF),
+                                color: AppColors.darkText,
                                 fontFamily: 'PlayfairDisplay',
                               ),
                             ),
@@ -60,7 +61,7 @@ OFF''',
                             ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffD4AF37),
+                                backgroundColor: AppColors.gold,
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 35,
                                   vertical: 15,
@@ -72,7 +73,7 @@ OFF''',
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: 0,
-                                  color: Color(0xff554300),
+                                  color:AppColors.darkGold,
                                   fontFamily: 'Inter',
                                 ),
                               ),

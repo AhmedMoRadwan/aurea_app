@@ -75,6 +75,13 @@ flutter:
   fonts:
     - family: PlayfairDisplay
       fonts:
+        - asset: assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/PlayfairDisplay-VariableFont_wght.ttf
+          style: italic
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
+        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
         - asset: assets/fonts/PlayfairDisplay-VariableFont_wght.ttf
         - asset: assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf
           

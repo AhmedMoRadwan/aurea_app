@@ -1,31 +1,44 @@
 
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/offer_section.dart';
 import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const DevDrawer(),
 
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        elevation: 0,
+        iconTheme: IconThemeData(color: const Color.fromARGB(255, 158, 125, 16)),
+        surfaceTintColor: Colors.white,
+        elevation: 1,
 
         title: Text(
-          "Aurea",
-          style: Theme.of(
-            context,
-          ).textTheme.headlineMedium?.copyWith(color: AppColors.gold),
+          "AUREA",
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            color: const Color.fromARGB(255, 158, 125, 16),
+            fontFamily: 'PlayfairDisplay',
+          ),
         ),
+        centerTitle: true,
 
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search, size: 24),
+            icon: const Icon(Icons.search, size: 28),
           ),
 
           Stack(
@@ -33,7 +46,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.shopping_bag_outlined, size: 24),
+                icon: const Icon(Icons.shopping_bag_outlined, size: 28),
               ),
 
               Positioned(
@@ -61,8 +74,62 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
         ],
+      ),
+
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 40,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: OfferSection(),
+                ),
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  children: [
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0,
+                        fontFamily: 'PlayfairDisplay',
+                      ),
+                    ),
+
+                    SizedBox(height: 120, child: ExploreListView()),
+                  ],
+                ),
+
+                Column(
+                  spacing: 24,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'All Products',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0,
+                        fontFamily: 'PlayfairDisplay',
+                      ),
+                    ),
+
+                   AllProductGridView(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
