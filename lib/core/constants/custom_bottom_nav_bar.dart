@@ -18,6 +18,10 @@ class CustomBottomNavBar extends StatelessWidget {
       onTap: onTap,
       type: BottomNavigationBarType.fixed,
 
+      // Background Color
+      // backgroundColor: Colors.white,
+
+      // Remove Shadow
       elevation: 8,
 
       // Selected Item
