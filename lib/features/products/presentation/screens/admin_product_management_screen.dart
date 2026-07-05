@@ -30,6 +30,7 @@ class AdminProductManagement extends StatelessWidget {
           'Products',
           style: AppTextStyles.heading2.copyWith(
             color: theme.colorScheme.onSurface,
+            fontFamily: 'PlayfairDisplay',
           ),
         ),
         actions: [
@@ -45,7 +46,7 @@ class AdminProductManagement extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: Column(
-            spacing: 8,
+            spacing: 5,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -60,6 +61,8 @@ class AdminProductManagement extends StatelessWidget {
                 style: AppTextStyles.bodyLarge.copyWith(
                   color: theme.colorScheme.onSurface,
                   fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  fontFamily: 'PlayfairDisplay',
                 ),
               ),
               SizedBox(height: 16),
