@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/app_startup.dart';
+//import 'package:nti_ecommerce_team4/app_startup.dart';
 import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
 import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/screens/create_new_password_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class AureaApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
-      home: const AppStartup(),
+      home: const CreateNewPasswordScreen(),
     );
   }
 }
