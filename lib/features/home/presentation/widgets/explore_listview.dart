@@ -36,7 +36,7 @@ class ExploreListView extends StatelessWidget {
                                   Text('Rings',style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    fontFamily: 'Inter'
+                                    fontFamily: 'Inter',
                                   ),),
                                 ],
                               ),

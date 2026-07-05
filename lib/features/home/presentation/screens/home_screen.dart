@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/offer_section.dart';
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const DevDrawer(),
 
       appBar: AppBar(
-        iconTheme: IconThemeData(color: AppColors.darkGold),
+        iconTheme: IconThemeData(color: const Color.fromARGB(255, 158, 125, 16)),
         surfaceTintColor: Colors.white,
         elevation: 1,
 
@@ -22,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         title: Text(
           "AUREA",
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: AppColors.darkGold,
+            color: const Color.fromARGB(255, 158, 125, 16),
             fontFamily: 'PlayfairDisplay',
           ),
         ),

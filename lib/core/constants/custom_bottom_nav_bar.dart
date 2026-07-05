@@ -18,7 +18,7 @@ class CustomBottomNavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
 
       // Background Color
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
 
       // Remove Shadow
       elevation: 8,

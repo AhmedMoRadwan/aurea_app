@@ -60,6 +60,7 @@ class AllProductGridView extends StatelessWidget {
                                             onPressed: () {},
                                             icon: const Icon(
                                               Icons.favorite_border,
+                                              color: AppColors.darkBackground,
                                               size: 18,
                                             ),
                                           ),
@@ -87,7 +88,7 @@ class AllProductGridView extends StatelessWidget {
                                       '12,500 SAR',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff735C00),
+                                        color: const Color.fromARGB(255, 158, 125, 16),
                                         fontSize: 16,
                                       ),
                                     ),
