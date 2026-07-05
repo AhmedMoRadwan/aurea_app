@@ -39,6 +39,7 @@ class CustomListTile extends StatelessWidget {
   final String title;
   final String? subtitle;
   final Widget? trailing;
+  final VoidCallback? onTap;
 
   const CustomListTile({
     super.key,
@@ -46,21 +47,25 @@ class CustomListTile extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.trailing,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        ListTile(
-          leading: Icon(icon, color: const Color(0xFFD4AF37)),
-          title: Text(title),
-          subtitle: subtitle != null ? Text(subtitle!) : null,
-          trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 16),
-        ),
-        const SizedBox(height: 10),
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          ListTile(
+            leading: Icon(icon, color: const Color(0xFFD4AF37)),
+            title: Text(title),
+            subtitle: subtitle != null ? Text(subtitle!) : null,
+            trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 16),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
     );
   }
 }

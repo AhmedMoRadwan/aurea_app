@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:nti_ecommerce_team4/features/profile/presentation/screens/about_us_screen.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/custom_widgets.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/logout_bottom.dart';
@@ -68,27 +69,43 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const Gap(20),
+
             SectionCard(
               title: "SUPPORT & LEGAL",
-              children: const [
+              children: [
                 CustomListTile(
                   icon: Icons.privacy_tip,
                   title: "Privacy Policy",
                 ),
+
                 Divider(
                   height: 1,
                   endIndent: 20,
                   indent: 20,
                   color: Colors.grey,
                 ),
-                CustomListTile(icon: Icons.info, title: "About Us"),
+
+                CustomListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AboutUsScreen(),
+                      ),
+                    );
+                  },
+                  icon: Icons.info,
+                  title: "About Us",
+                ),
+
                 Divider(
                   height: 1,
                   endIndent: 20,
                   indent: 20,
                   color: Colors.grey,
                 ),
+
                 CustomListTile(icon: Icons.contact_mail, title: "Contact Us"),
               ],
             ),
