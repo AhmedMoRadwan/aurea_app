@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/main_screen.dart';
 import '../widgets/auth_divider.dart';
 import '../widgets/auth_header.dart';
@@ -16,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.lightSurface,
       body: SingleChildScrollView(
         child: SafeArea(
           minimum: const EdgeInsets.only(left: 20, right: 20, top: 50),
@@ -28,85 +30,101 @@ class LoginScreen extends StatelessWidget {
                 width: 130,
               ),
 
-              const AuthHeader(
-                title: 'Welcome Back',
-                subtitle: '''Sign in to continue your luxury shopping
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.lightBackground,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: AppColors.lightBorder),
+                ),
+                child: Column(
+                  children: [
+                    const Gap(25),
+                    const AuthHeader(
+                      title: 'Welcome Back',
+                      subtitle: '''Sign in to continue your luxury shopping
                        experience.''',
-              ),
-              const Gap(25),
+                    ),
+                    const Gap(25),
 
-              //* Email TextFormField
-              const CustomTextFormField(
-                labelText: 'Email',
-                prefixIcon: Icons.email,
-              ),
+                    //* Email TextFormField
+                    const CustomTextFormField(
+                      labelText: 'Email',
+                      prefixIcon: Icons.email,
+                    ),
 
-              const Gap(25),
+                    const Gap(25),
 
-              //* Password TextFormField
-              const CustomTextFormField(
-                labelText: 'Password',
-                prefixIcon: Icons.lock,
-                suffixIcon: Icons.visibility,
-              ),
-              const Gap(5),
+                    //* Password TextFormField
+                    const CustomTextFormField(
+                      labelText: 'Password',
+                      prefixIcon: Icons.lock,
+                      suffixIcon: Icons.visibility,
+                    ),
+                    const Gap(5),
 
-              //* Forget Password
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ForgetPasswordScreen(),
+                    //* Forget Password
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const ForgetPasswordScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text('Forget Password?'),
                       ),
-                    );
-                  },
-                  child: const Text('Forget Password?'),
+                    ),
+
+                    const Gap(25),
+
+                    //* Login Button
+                    CustomButton(
+                      buttonText: 'LOGIN',
+                      onButtonPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainScreen(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const Gap(25),
+
+                    //* Alternative Login Options
+                    const AuthDivider(dividerText: 'OR CONTINUE WITH'),
+
+                    const Gap(25),
+
+                    //* Social Auth Section
+                    const SocialAuthSection(),
+
+                    const Gap(25),
+
+                    //* Dont have an account
+                    AuthRedirectText(
+                      question: 'Don\'t have an account?',
+                      actionText: 'Sign Up  ',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const Gap(50),
+                  ],
                 ),
               ),
-
-              const Gap(25),
-
-              //* Login Button
-              CustomButton(
-                buttonText: 'LOGIN',
-                onButtonPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
-                  );
-                },
-              ),
-
-              const Gap(25),
-
-              //* Alternative Login Options
-              const AuthDivider(dividerText: 'OR CONTINUE WITH'),
-
-              const Gap(25),
-
-              //* Social Auth Section
-              const SocialAuthSection(),
-
-              const Gap(25),
-
-              //* Dont have an account
-              AuthRedirectText(
-                question: 'Don\'t have an account?',
-                actionText: 'Sign Up  ',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignupScreen(),
-                    ),
-                  );
-                },
-              ),
-
-              const Gap(50),
             ],
           ),
         ),

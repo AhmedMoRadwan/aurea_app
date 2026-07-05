@@ -47,6 +47,7 @@ class AddProductListview extends StatelessWidget {
                                 ?.copyWith(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 18,
+                                  fontFamily: 'PlayfairDisplay',
                                 ),
                           ),
                           Text(

@@ -9,26 +9,29 @@ class AuthAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return AppBar(
-      backgroundColor: Colors.transparent,
       elevation: 0,
+      scrolledUnderElevation: 0,
+      backgroundColor: theme.scaffoldBackgroundColor,
       leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          size: 24,
-          color: Theme.of(context).appBarTheme.iconTheme?.color,
-        ),
         onPressed: () {
           Navigator.pop(context);
         },
-      ),
-      title: Text(
-        'AUREA',
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-          fontWeight: FontWeight.w600,
+        icon: Icon(
+          Icons.arrow_back_ios,
+          size: 20,
           color: AppColors.lightTextMuted,
         ),
       ),
+      title: Text(
+        "Aurea",
+        style: AppTextStyles.heading2.copyWith(
+          color: AppColors.lightTextMuted,
+          fontFamily: 'PlayfairDisplay',
+        ),
+      ),
+      centerTitle: true,
     );
   }
 }
