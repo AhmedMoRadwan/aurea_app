@@ -46,7 +46,7 @@ class SignupScreen extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
               decoration: BoxDecoration(
                 color: AppColors.lightBackground,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(50),
                 border: Border.all(color: AppColors.lightBorder),
               ),
               child: Column(
