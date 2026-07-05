@@ -1,8 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/offer_section.dart';
+import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
         surfaceTintColor: Colors.white,
         elevation: 1,
 
-        // centerTitle: true,
         title: Text(
           "AUREA",
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -51,8 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 right: 6,
                 top: 8,
                 child: Container(
-                  width: 16,
-                  height: 16,
+                  width: 14,
+                  height: 14,
                   decoration: const BoxDecoration(
                     color: Color(0xFFD4AF37),
                     shape: BoxShape.circle,
