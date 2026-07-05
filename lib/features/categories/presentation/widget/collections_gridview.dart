@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-
 class CollectionsGridView extends StatelessWidget {
   const CollectionsGridView({super.key});
 
@@ -11,21 +9,20 @@ class CollectionsGridView extends StatelessWidget {
         childAspectRatio: 0.75,
         crossAxisCount: 2,
         crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
       ),
       itemCount: 20,
       itemBuilder: (context, index) {
         return Card(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          // color: Color(0xffFFFFFF),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
-            side: BorderSide(
-              color: Color.fromARGB(255, 182, 182, 182),
-              width: 1,
-            ),
+            // side: BorderSide(color: Color(0xffF6EFDD))
           ),
 
+          // elevation: 0.1,
           child: Padding(
-            padding: EdgeInsetsGeometry.all(15),
+            padding: EdgeInsets.all(10),
             child: InkWell(
               onTap: () {},
 
@@ -36,20 +33,19 @@ class CollectionsGridView extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        'assets/images/Aurea_logo.jpg',
+                        'assets/images/Border.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
                       ),
                     ),
                   ),
-
                   SizedBox(height: 15),
 
                   Text(
                     'RINGS',
                     style: TextStyle(
-                      color: AppColors.gold,
-                      fontSize: 16,
+                      color: const Color.fromARGB(255, 158, 125, 16),
+                      fontSize: 15,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
                     ),

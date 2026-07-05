@@ -3,49 +3,44 @@ import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widget/collections_gridview.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widget/textfield.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
-import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 
-class CategorieScreen extends StatelessWidget {
+class CategorieScreen extends StatefulWidget {
   const CategorieScreen({super.key});
+
+  @override
+  State<CategorieScreen> createState() => _CategorieScreenState();
+}
+
+class _CategorieScreenState extends State<CategorieScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      // backgroundColor: Color(0xffFBF9F9),
       drawer: const DevDrawer(),
 
       appBar: AppBar(
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(2),
-          child: Container(height: 1, color: Colors.grey.shade400),
+        
+        title: Text(
+          "AUREA",
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            color: const Color.fromARGB(255, 158, 125, 16),
+            fontFamily: 'PlayfairDisplay',
+          ),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        iconTheme: IconThemeData(
-          color: Theme.of(context).iconTheme.color,
-          size: 24,
-        ),
+        centerTitle: true,
 
         scrolledUnderElevation: 0,
         shadowColor: Colors.transparent,
 
-        // title: CircleAvatar(
-        //   radius: 18,
-        //   backgroundImage: AssetImage('assets/images/Aurea_logo.jpg'),
-        // ),
-        // centerTitle: true,
-        title: Text(
-          "AUREA",
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: AppColors.gold,
-            fontFamily: 'PlayfairDisplay',
-          ),
-        ),
         actions: [
           Stack(
             clipBehavior: Clip.none,
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.shopping_bag_outlined, size: 28),
+                icon: const Icon(Icons.shopping_bag_outlined, size: 28),
               ),
 
               Positioned(
@@ -84,6 +79,9 @@ class CategorieScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 15,
             children: [
+
+              SizedBox(height: 8,),
+
               Text(
                 'Collections',
                 style: TextStyle(
@@ -103,4 +101,5 @@ class CategorieScreen extends StatelessWidget {
       ),
     );
   }
+  
 }
