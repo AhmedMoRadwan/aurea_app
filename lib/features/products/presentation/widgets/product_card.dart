@@ -18,28 +18,36 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: 140,
-          decoration: BoxDecoration(
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            height: 140,
+            width: double.infinity,
             color: imageColor ?? Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
+            child: Center(
+              child: Icon(Icons.image, color: Colors.white54, size: 48),
+            ),
           ),
         ),
         const SizedBox(height: 12),
         Text(
           title,
           style: TextStyle(
-
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
             color: AppColors.lightTextPrimary,
           ),
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.left,
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         Text(
           price,
           style: TextStyle(
             color: AppColors.gold,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],
