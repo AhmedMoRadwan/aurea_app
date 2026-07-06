@@ -1,54 +1,32 @@
-// Aurea — Ethereal Diamond Necklace product page
-//
-// Drop this file in as lib/main.dart of a fresh `flutter create` project
-// and run it — no extra packages required.
-//
-// Optional polish: add the `google_fonts` package and swap the font
-// families below for 'Fraunces' (display) and 'Noto Naskh Arabic' /
-// 'Noto Sans Arabic' (Arabic text) to match the original design exactly.
 
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 
-void main() => runApp(const AureaApp());
 
-class AureaApp extends StatelessWidget {
-  const AureaApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Aurea',
-      theme: ThemeData(
-        useMaterial3: true,
-        scaffoldBackgroundColor: AureaColors.ivory,
-        colorScheme: ColorScheme.fromSeed(seedColor: AureaColors.gold),
-      ),
-      home: const ProductDetailsScreen(),
-    );
-  }
-}
 
 // ---------------------------------------------------------------------------
-// Design tokens
+// Design tokens (mapped to AppColors)
 // ---------------------------------------------------------------------------
 class AureaColors {
-  static const ink = Color(0xFF23201B);
-  static const inkSoft = Color(0xFF4A443B);
-  static const ivory = Color(0xFFF1EBDD);
-  static const card = Color(0xFFFFFFFF);
-  static const gold = Color(0xFFB8912F);
-  static const goldDeep = Color(0xFF8F701F);
-  static const goldPale = Color(0xFFE7D9AE);
-  static const sage = Color(0xFF5B7A5B);
-  static const sageBg = Color(0xFFE7EEE3);
-  static const line = Color(0xFFEAE3D3);
-  static const priceOld = Color(0xFFAFA492);
+  AureaColors._();
+
+  // Semantic aliases that delegate to the global AppColors palette
+  static const ink = AppColors.lightTextPrimary;
+  static const inkSoft = AppColors.lightTextSecondary;
+  static const ivory = AppColors.lightSurface;
+  static const card = AppColors.white;
+  static const gold = AppColors.gold;
+  static const goldDeep = AppColors.gold;
+  static const goldPale = AppColors.goldSoft;
+  static const sage = AppColors.success;
+  static const sageBg = AppColors.lightSurfaceAlt;
+  static const line = AppColors.lightBorder;
+  static const priceOld = AppColors.lightTextSecondary;
 }
 
-const displayFont = 'serif'; // swap for GoogleFonts.fraunces() if available
+
 
 // ---------------------------------------------------------------------------
 // Data
@@ -116,7 +94,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AureaColors.ivory,
+      backgroundColor: AppColors.darkBackground,
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 420),
@@ -125,11 +103,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
                 decoration: BoxDecoration(
-                  color: AureaColors.card,
+                //  color: AppColors.,
                   borderRadius: BorderRadius.circular(34),
                   boxShadow: [
                     BoxShadow(
-                      color: AureaColors.ink.withOpacity(0.18),
+                      color: AppColors.gold.withOpacity(0.18),
                       blurRadius: 45,
                       offset: const Offset(0, 20),
                     ),
@@ -185,7 +163,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 const _SectionLabel(icon: Icons.favorite_border_rounded, label: 'Complete the Set'),
                                 const Text('View All →',
                                     style: TextStyle(
-                                        color: AureaColors.goldDeep, fontWeight: FontWeight.w700, fontSize: 12.5)),
+                                        color: AppColors.darkBackground, fontWeight: FontWeight.w700, fontSize: 12.5)),
                               ],
                             ),
                             const SizedBox(height: 12),
@@ -218,7 +196,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
                           decoration: BoxDecoration(
-                            color: AureaColors.ink,
+                            color: AppColors.ink,
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
@@ -320,7 +298,6 @@ class _HeroCarouselState extends State<HeroCarousel> {
                   'AUREA',
                   style: TextStyle(
                     color: Color(0xFFF6F1E4),
-                    fontFamily: displayFont,
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                     letterSpacing: 2,
@@ -439,7 +416,6 @@ class _TitleRow extends StatelessWidget {
               Text(
                 'Ethereal Diamond\nNecklace',
                 style: TextStyle(
-                  fontFamily: displayFont,
                   fontWeight: FontWeight.w600,
                   fontSize: 24,
                   height: 1.22,
@@ -625,7 +601,7 @@ class _PriceRow extends StatelessWidget {
       textBaseline: TextBaseline.alphabetic,
       children: [
         const Text('\$4,500',
-            style: TextStyle(fontFamily: displayFont, fontSize: 27, fontWeight: FontWeight.w600, color: AureaColors.ink)),
+            style: TextStyle(color: AureaColors.ink)),
         const SizedBox(width: 10),
         const Text('\$5,200',
             style: TextStyle(
