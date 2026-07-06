@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/screens/about_us_screen.dart';
+import 'package:nti_ecommerce_team4/features/profile/presentation/screens/privacy_policy_screen.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/custom_widgets.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/logout_bottom.dart';
@@ -75,6 +76,14 @@ class ProfileScreen extends StatelessWidget {
               title: "SUPPORT & LEGAL",
               children: [
                 CustomListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PrivacyPolicyScreen(),
+                      ),
+                    );
+                  },
                   icon: Icons.privacy_tip,
                   title: "Privacy Policy",
                 ),
