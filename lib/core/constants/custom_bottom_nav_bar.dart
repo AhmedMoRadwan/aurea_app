@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -20,20 +21,20 @@ class CustomBottomNavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
 
       // Background Color
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
 
       // Remove Shadow
       elevation: 8,
 
       // Selected Item
-      selectedItemColor: const Color(0xFFB8860B),
+      selectedItemColor: AppColors.gold,
       selectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w600,
       ),
 
       // Unselected Item
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.grey[600],
       unselectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,

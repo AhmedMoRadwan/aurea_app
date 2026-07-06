@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/app_startup.dart';
 import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
 import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 import 'package:nti_ecommerce_team4/features/splash/presentation/screens/splash_screen.dart';
@@ -27,11 +28,8 @@ class AureaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      themeMode: themeProvider.themeMode,
-      home: const ProductDetailsScreen(),
-      routes: {
-        '/home': (context) => const MainScreen(),
-      },
+      themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
+      home: const AppStartup(),
     );
   }
 }
