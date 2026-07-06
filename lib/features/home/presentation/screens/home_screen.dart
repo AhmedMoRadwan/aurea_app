@@ -24,8 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: IconThemeData(
           color: const Color.fromARGB(255, 158, 125, 16),
         ),
-        surfaceTintColor: Colors.white,
-        elevation: 1,
+        // surfaceTintColor: Colors.white,
+        // elevation: 1,
 
         title: Text(
           "AUREA",
