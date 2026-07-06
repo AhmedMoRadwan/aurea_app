@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 
 import '../widgets/product_card.dart';
+import '../widgets/qunatity_section_with_label.dart';
 import '../widgets/specification_row.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -319,72 +320,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   const SizedBox(height: 24),
 
                   // Quantity Section
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'QUANTITY',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[300]!),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          children: [
-                            IconButton(
-                              icon:
-                                  const Icon(Icons.remove, size: 18),
-                              onPressed: () {},
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              '1',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            IconButton(
-                              icon: const Icon(Icons.add, size: 18),
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                QuantitySectionWithLabel(),
                   const SizedBox(height: 24),
 
-                  // Complete the Set Section
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'COMPLETE THE SET',
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                          color:AppColors.lightText,
                           letterSpacing: 1,
                         ),
                       ),
                       Text(
                         'View All',
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFFD4AF37),
+                          color: AppColors.gold,
                         ),
                       ),
                     ],
@@ -410,9 +362,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
                   const SizedBox(height: 24),
-
-
-                addToCartButtton(),
+                addToCartButton(),
                   const SizedBox(height: 16),
                 ],
               ),
@@ -422,7 +372,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
     );
   }
-  Widget addToCartButtton()
+  Widget addToCartButton()
   {
     return SizedBox(
       width: double.infinity,
