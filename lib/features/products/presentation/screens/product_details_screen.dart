@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+
+import '../widgets/product_card.dart';
+import '../widgets/specification_row.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
+  const ProductDetailsScreen({super.key});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -52,7 +56,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 children: [
                   // Placeholder for image
                   Container(
-                    color: Colors.grey[300],
+                    color: AppColors.lightText.withOpacity(0.1),
                   ),
                   // Dotted lines for product center
                   Column(
@@ -440,90 +444,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 }
 
-class SpecificationRow extends StatelessWidget {
-  final String label;
-  final String value;
-  final Color? valueColor;
 
-  const SpecificationRow({
-    Key? key,
-    required this.label,
-    required this.value,
-    this.valueColor,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[600],
-            ),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: valueColor ?? Colors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
-class ProductCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final Color? imageColor;
-
-  const ProductCard({
-    Key? key,
-    required this.title,
-    required this.price,
-    this.imageColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 140,
-          decoration: BoxDecoration(
-            color: imageColor ?? Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        const SizedBox(height: 12),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          price,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w700,
-            color: const Color(0xFFD4AF37),
-          ),
-        ),
-      ],
-    );
-  }
-}
