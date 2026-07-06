@@ -24,23 +24,25 @@ class ForgetPasswordScreen extends StatelessWidget {
                 Text(
                   "Forgot Password",
                   style: AppTextStyles.heading1.copyWith(
-                    color: AppColors.lightTextPrimary,
+                    color: Theme.of(context).textTheme.headlineMedium?.color,
                     fontFamily: 'PlayfairDisplay',
                   ),
                 ),
                 Gap(12),
+
                 Text(
-                  'Enter your email address to receive a verification code.',
-                  style: AppTextStyles.bodyLarge.copyWith(
-                    color: AppColors.lightTextSecondary,
+                  'Please enter your email address to receive a verification code.',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.bodyMedium.copyWith(
+                    // color: AppColors.lightTextSecondary,
                     fontFamily: 'PlayfairDisplay',
                   ),
                 ),
                 Gap(40),
-                CustomTextFormField(labelText: "EMAIL ADDRESS"),
+                CustomTextFormField(labelText: "Email Address"),
                 Gap(40),
                 CustomButton(
-                  buttonText: "SEND CODE",
+                  buttonText: "Next",
                   onButtonPressed: () {
                     Navigator.push(
                       context,

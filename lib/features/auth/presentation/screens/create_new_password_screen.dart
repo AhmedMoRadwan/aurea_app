@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-import 'package:nti_ecommerce_team4/features/auth/presentation/screens/signup_screen.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/screens/login_screen.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_appbar.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_button.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_text_form_field.dart';
@@ -26,7 +26,6 @@ class CreateNewPasswordScreen extends StatelessWidget {
                 Text(
                   "New Password",
                   style: AppTextStyles.heading1.copyWith(
-                    color: AppColors.lightTextPrimary,
                     fontFamily: 'PlayfairDisplay',
                   ),
                 ),
@@ -34,8 +33,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                 Text(
                   '''Create a new secure password for
                 your account.''',
-                  style: AppTextStyles.bodyLarge.copyWith(
-                    color: AppColors.lightTextSecondary,
+                  style: AppTextStyles.bodyMedium.copyWith(
                     fontFamily: 'PlayfairDisplay',
                   ),
                 ),
@@ -55,12 +53,12 @@ class CreateNewPasswordScreen extends StatelessWidget {
                 PasswordConditions(text: "Contains a symbol or number"),
                 Gap(32),
                 CustomButton(
-                  buttonText: "UPDATE PASSWORD",
+                  buttonText: "Update Password",
                   onButtonPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignupScreen(),
+                        builder: (context) => const LoginScreen(),
                       ),
                     );
                   },

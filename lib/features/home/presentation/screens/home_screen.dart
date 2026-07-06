@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/offer_section.dart';
 import 'package:nti_ecommerce_team4/core/theme/themes.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart';
-
+import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart'
+    hide DevDrawer;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const DevDrawer(),
 
       appBar: AppBar(
-        iconTheme: IconThemeData(color: const Color.fromARGB(255, 158, 125, 16)),
+        iconTheme: IconThemeData(
+          color: const Color.fromARGB(255, 158, 125, 16),
+        ),
         surfaceTintColor: Colors.white,
         elevation: 1,
 
@@ -123,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                   AllProductGridView(),
+                    AllProductGridView(),
                   ],
                 ),
               ],

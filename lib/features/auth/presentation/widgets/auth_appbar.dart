@@ -26,7 +26,7 @@ class AuthAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         "Aurea",
-        style: AppTextStyles.heading2.copyWith(
+        style: AppTextStyles.heading1.copyWith(
           color: AppColors.lightTextMuted,
           fontFamily: 'PlayfairDisplay',
         ),

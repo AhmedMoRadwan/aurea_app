@@ -7,6 +7,7 @@ import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_divi
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_button.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/social_button.dart';
+import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -14,38 +15,23 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightSurface,
+      // backgroundColor: AppColors.lightSurface,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      size: 20,
-                      color: AppColors.lightTextMuted,
-                    ),
-                  ),
-                  Spacer(flex: 2),
-                  Image.asset(
-                    "assets/images/Aurea_logo.jpg",
-                    height: 55,
-                    width: 50,
-                  ),
-                  Spacer(flex: 3),
-                ],
+              const Gap(50),
+              const Image(
+                image: AssetImage('assets/images/logo.png'),
+                height: 130,
+                width: 130,
               ),
               Center(
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   margin: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
                   decoration: BoxDecoration(
-                    color: AppColors.lightBackground,
+                    // color: AppColors.lightBackground,
                     borderRadius: BorderRadius.circular(50),
                     border: Border.all(color: AppColors.lightBorder),
                   ),
@@ -68,16 +54,21 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                       const Gap(15),
+
                       CustomTextFormField(labelText: "Full Name"),
+
                       CustomTextFormField(labelText: "Email"),
+
                       CustomTextFormField(
                         labelText: "Password",
                         suffixIcon: Icons.visibility,
                       ),
+
                       CustomTextFormField(
                         labelText: "Confirm Password",
                         suffixIcon: Icons.visibility,
                       ),
+
                       CustomButton(
                         buttonText: 'Create Account',
                         onButtonPressed: () {
@@ -90,8 +81,11 @@ class SignupScreen extends StatelessWidget {
                         },
                       ),
                       const Gap(8),
+
                       const AuthDivider(dividerText: 'OR SIGN UP WITH'),
+
                       const Gap(15),
+
                       Row(
                         spacing: 30,
                         children: [

@@ -17,12 +17,13 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightSurface,
+      // backgroundColor: AppColors.lightSurface,
       body: SingleChildScrollView(
         child: SafeArea(
-          minimum: const EdgeInsets.only(left: 20, right: 20, top: 50),
+          // minimum: const EdgeInsets.only(left: 20, right: 20, top: 50),
           child: Column(
             children: [
+              const Gap(50),
               //* AuthHeader
               const Image(
                 image: AssetImage('assets/images/logo.png'),
@@ -32,8 +33,9 @@ class LoginScreen extends StatelessWidget {
 
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
                 decoration: BoxDecoration(
-                  color: AppColors.lightBackground,
+                  // color: AppColors.lightBackground,
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(color: AppColors.lightBorder),
                 ),
@@ -121,10 +123,11 @@ class LoginScreen extends StatelessWidget {
                       },
                     ),
 
-                    const Gap(50),
+                    const Gap(30),
                   ],
                 ),
               ),
+              const Gap(50),
             ],
           ),
         ),
