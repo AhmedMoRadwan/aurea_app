@@ -43,6 +43,8 @@ class AppColors {
   static const success = Color(0xFF2E7D32);
   static const error = Color(0xFFD32F2F);
   static const white = Color(0xFFFFFFFF);
+
+  static Color? get darkGold => null;
 }
 
 /// ==========================================================
@@ -193,6 +195,14 @@ class AppTheme {
         color: AppColors.lightTextSecondary,
       ),
       border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.lightBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.gold),
+      ),
+      enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(color: AppColors.lightBorder),
       ),
