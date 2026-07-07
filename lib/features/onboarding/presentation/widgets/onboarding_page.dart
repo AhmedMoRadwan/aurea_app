@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_theme.dart';
 import 'brand_name_skip_button.dart';
 import 'number_and_next_button.dart';
 
@@ -30,7 +31,7 @@ class OnboardingPage extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [const Color(0xFF3A3A3A), const Color(0xFFF5F1E8)],
+              colors: [AppColors.darkBackground,AppColors.white ],
               stops: const [0.0, 0.35],
             ),
           ),
@@ -47,10 +48,10 @@ class OnboardingPage extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
+                        color: AppColors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: AppColors.darkTextSecondary,
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -75,22 +76,22 @@ class OnboardingPage extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF1A1A1A),
-                          height: 1.2,
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            color: AppColors.darkBackground,
+                            fontSize: 34,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                            height: 1.2
                         ),
                       ),
                       const SizedBox(height: 16),
 
                       Text(
                         description,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF666666),
-                          height: 1.5,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AppColors.darkTextSecondary,
+                          letterSpacing: 1,
+                          height: 1.2
                         ),
                       ),
                     ],

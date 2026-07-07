@@ -39,7 +39,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             title: 'Discover  Luxury Accessories',
             description:
                 'Curated collections of the world\'s finest jewelry and accessories.',
-            imageUrl: 'assets/jewelry1.png',
+            imageUrl: 'assets/images/dd776c2dee1ba8531d330bb78377822cdce767c6.png',
             onNext: () {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -53,7 +53,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             title: 'Discover  Luxury Accessories',
             description:
                 'Curated collections of the world\'s finest jewelry and accessories.',
-            imageUrl: 'assets/jewelry2.png',
+            imageUrl: 'assets/images/dd776c2dee1ba8531d330bb78377822cdce767c6.png',
             onNext: () {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -67,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             title: 'Discover Luxury Accessories',
             description:
                 'Curated collections of the world\'s finest jewelry and accessories.',
-            imageUrl: 'assets/jewelry3.png',
+            imageUrl: 'assets/images/dd776c2dee1ba8531d330bb78377822cdce767c6.png',
             onNext: () {},
             onSkip: () {},
           ),

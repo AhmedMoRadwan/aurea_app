@@ -1,12 +1,18 @@
-import 'package:flutter/cupertino.dart';
 
+import 'package:flutter/material.dart';
+
+import '../../../../core/theme/app_theme.dart';
 import 'next_button.dart';
 
 class NumberAndNextButton extends StatelessWidget {
-  const NumberAndNextButton({super.key, required this.pageNumber, required this.onNext});
+  const NumberAndNextButton({
+    super.key,
+    required this.pageNumber,
+    required this.onNext,
+  });
+
   final int pageNumber;
   final VoidCallback onNext;
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +29,8 @@ class NumberAndNextButton extends StatelessWidget {
             children: [
               Text(
                 '0$pageNumber / 03',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF1A1A1A),
-                  letterSpacing: 1,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.darkTextSecondary,
                 ),
               ),
 

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/features/onboarding/presentation/widgets/skip_button.dart';
+
+import '../../../../core/theme/app_theme.dart';
 
 class BrandNameAndSkipButton extends StatelessWidget {
   const BrandNameAndSkipButton({super.key,required this.onSkip});
@@ -23,10 +26,9 @@ class BrandNameAndSkipButton extends StatelessWidget {
 
               Text(
                 'AUREA',
-                style: TextStyle(
-                  color: const Color(0xFFD4AF37),
-                  letterSpacing: 2,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+
+                    color: AppColors.gold,),
               ),
 
              SkipButton(onSkip: onSkip),

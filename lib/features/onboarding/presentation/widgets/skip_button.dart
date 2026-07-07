@@ -1,21 +1,21 @@
+import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
+import '../../../../core/theme/app_theme.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({super.key, required this.onSkip});
+
   final VoidCallback onSkip;
 
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
+    return GestureDetector(
       onTap: onSkip,
       child: Text(
         'Skip',
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: const Color(0xFFB8B8B8),
-        ),
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium?.copyWith(color: AppColors.darkTextSecondary),
       ),
     );
   }
