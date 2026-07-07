@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_theme.dart';
 import '../widgets/cornerPainter.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -79,8 +80,8 @@ class _SplashScreenState extends State<SplashScreen>
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                             colors: [
-                              const Color(0xFFD4AF37).withOpacity(0.3),
-                              const Color(0xFFD4AF37).withOpacity(0),
+                              AppColors.gold.withOpacity(0.2),
+                              AppColors.gold.withOpacity(0.05),
                             ],
                           ),
                         ),
@@ -91,10 +92,10 @@ class _SplashScreenState extends State<SplashScreen>
                         height: 120,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white,
+                          color: AppColors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFD4AF37).withOpacity(0.2),
+                              color: AppColors.gold.withOpacity(0.2),
                               blurRadius: 20,
                               spreadRadius: 5,
                             ),
@@ -103,12 +104,11 @@ class _SplashScreenState extends State<SplashScreen>
                         child: Center(
                           child: Text(
                             'Aurea',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFFD4AF37),
-                              letterSpacing: 2,
-                            ),
+                            style: Theme.of(context).textTheme.headlineLarge!
+                                .copyWith(
+                                  color: AppColors.gold,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ),
                       ),
@@ -118,10 +118,10 @@ class _SplashScreenState extends State<SplashScreen>
 
                   Text(
                     'AUREA',
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: AppColors.gold,
+                      fontWeight: FontWeight.bold,
                       fontSize: 48,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF8B7355),
                       letterSpacing: 4,
                     ),
                   ),
@@ -129,10 +129,8 @@ class _SplashScreenState extends State<SplashScreen>
                   // Tagline
                   Text(
                     'FINE JEWELRY & ARTISTRY',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFFB8B8B8),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: AppColors.darkTextSecondary,
                       letterSpacing: 3,
                     ),
                   ),
@@ -162,9 +160,9 @@ class _SplashScreenState extends State<SplashScreen>
                               height: 8,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: const Color(
-                                  0xFFD4AF37,
-                                ).withOpacity((position * 2 - 1).abs()),
+                                color: AppColors.gold
+                                    .withOpacity(0.2)
+                                    .withOpacity((position * 2 - 1).abs()),
                               ),
                             );
                           }),
@@ -177,10 +175,8 @@ class _SplashScreenState extends State<SplashScreen>
 
                 Text(
                   'INITIALIZING EXPERIENCE',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFFC4C4C4),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: AppColors.white,
                     letterSpacing: 2,
                   ),
                 ),
@@ -204,5 +200,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-
-
