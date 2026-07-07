@@ -32,7 +32,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
               child: const Icon(
                 Icons.edit,
                 size: 15,
-                color: const Color(0xFF554300),
+                color: Color(0xFF554300),
               ),
             ),
           ],

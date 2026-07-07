@@ -3,9 +3,6 @@ import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_produ
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/offer_section.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart'
-    hide DevDrawer;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

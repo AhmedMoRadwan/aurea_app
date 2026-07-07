@@ -7,7 +7,6 @@ import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_divi
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_button.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/social_button.dart';
-import 'package:nti_ecommerce_team4/features/profile/presentation/widgets/dark_mode_toggle.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
