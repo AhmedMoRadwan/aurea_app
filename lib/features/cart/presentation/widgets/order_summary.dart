@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({super.key});
@@ -14,13 +15,9 @@ class OrderSummary extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             const Text(
               "Order Summaryyyy",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 8),
@@ -28,21 +25,14 @@ class OrderSummary extends StatelessWidget {
 
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Subtotal"),
-                Text("€7,400"),
-              ],
+              children: [Text("Subtotal"), Text("€7,400")],
             ),
 
             const SizedBox(height: 6),
 
-            
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Shipping"),
-                Text("FREE"),
-              ],
+              children: [Text("Shipping"), Text("FREE")],
             ),
 
             const SizedBox(height: 6),
@@ -52,7 +42,7 @@ class OrderSummary extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.amber.shade100,
+                // color: Colors.amber.shade100,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Row(
@@ -60,8 +50,7 @@ class OrderSummary extends StatelessWidget {
                 children: [
                   Text(
                     "Seasonal Offer (-10%)",
-                    style: TextStyle(fontWeight: FontWeight.w500,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
                     "-€740",
@@ -80,10 +69,7 @@ class OrderSummary extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Total",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                Text("Total", style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(
                   "€6,660",
                   style: TextStyle(
@@ -98,25 +84,26 @@ class OrderSummary extends StatelessWidget {
 
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber.shade700,
+                backgroundColor: AppColors.gold,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               onPressed: () {},
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "PROCEED TO CHECKOUT",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,color: Colors.black,
+                      fontSize: 16,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ),
-                  SizedBox(width: 8),
-                  Icon(Icons.arrow_forward_ios, size: 18),
                 ],
               ),
             ),

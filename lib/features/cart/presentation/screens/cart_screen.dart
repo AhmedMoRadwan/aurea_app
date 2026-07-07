@@ -14,58 +14,59 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("AUREA"),
-        backgroundColor: Colors.white,
+        title: const Text(
+          "AUREA",
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w600,
+            fontFamily: "playfairdisplay",
+          ),
+        ),
         centerTitle: true,
-        actions:const [
-          Padding(padding:EdgeInsets.only(right: 12),
-          child: Icon(Icons.shopping_bag)),
-          
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.shopping_bag),
+          ),
         ],
         leading: const Padding(
-          padding:EdgeInsets.only(left: 12),
-          child: Icon(Icons.menu)), 
+          padding: EdgeInsets.only(left: 12),
+          child: Icon(Icons.menu),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Column(children:const [
+          Column(
+            children: const [
+              Text(
+                "YOUR SHOPPING BAG",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 8),
+            ],
+          ),
+          const SizedBox(height: 16),
 
-           Text("YOUR SHOPPING BAG",
-           textAlign: TextAlign.center,
-          style:TextStyle(fontSize: 20,
-          fontWeight: FontWeight.bold,
-          ) ,
-          ),
-          SizedBox(height: 8),
-          Divider(height: 1,endIndent: 200,indent: 200,
-          color: Color.fromARGB(255, 242, 178, 1),
-          
-          ),
-          ]
-          ),
-            const SizedBox(height: 16),
-        
-      
           const ProductItem(
-             imageUrl: "lib/assets/images/my.jpg",
+            imageUrl: "assets/images/cart_image1.png",
             title: "Ethereal Diamond Necklace",
             subtitle: "18K Yellow Gold / 0.5CT Pear Cut",
             price: "€2,430",
-       
           ),
-    
+
           const ProductItem(
             title: "Celestial Emerald Ring",
             subtitle: "18K Rose Gold / 1.2CT Emerald",
             price: "€3,100",
-            imageUrl: "lib/assets/images/my.jpg",
+            imageUrl: "assets/images/cart_image2.png",
           ),
           const ProductItem(
             title: "Luminous Pearl Drops",
             subtitle: "18K Yellow Gold / AAA Pearls",
             price: "€1,850",
-            imageUrl: "lib/assets/images/my.jpg",
+            imageUrl: "assets/images/cart_image3.png",
           ),
 
           const SizedBox(height: 20),
@@ -73,13 +74,8 @@ class _CartScreenState extends State<CartScreen> {
           const OrderSummary(),
 
           const SizedBox(height: 16),
-      ]
+        ],
       ),
-
-
-        
-              
-      );
-            
+    );
   }
 }

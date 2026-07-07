@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class ProductItem extends StatelessWidget {
   final String title;
@@ -25,7 +26,6 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
@@ -51,7 +51,7 @@ class ProductItem extends StatelessWidget {
                 Text(
                   price,
                   style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 150, 80, 1),
                   ),
@@ -60,50 +60,54 @@ class ProductItem extends StatelessWidget {
             ),
 
             const SizedBox(height: 8),
-           
 
-            Text(
-              subtitle,
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.black54,
-              ),
-            ),
+            Text(subtitle, style: const TextStyle(fontSize: 14)),
 
             const SizedBox(height: 10),
-             
 
-    
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.amber.shade50,
-                    border: Border.all(color: Colors.amber.shade100,width: 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {},
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      // color: Colors.amber.shade50,
+                      border: Border.all(
+                        color: Colors.amber.shade100,
+                        width: 1,
                       ),
-                      const Text("1"),
-                      IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () {},
-                      ),
-                    ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.remove, size: 25),
+                          onPressed: () {},
+                        ),
+                        const Text(
+                          "1",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add, size: 25),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () {},
-                ),
+                Gap(70),
+
+                IconButton(icon: const Icon(Icons.close), onPressed: () {}),
               ],
             ),
           ],
