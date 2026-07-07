@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/main_screen.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/cornerPainter.dart';
@@ -22,9 +23,11 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     )..repeat();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 300), () {
       if (mounted) {
-        Navigator.of(context).pushReplacementNamed('/home');
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
       }
     });
   }
