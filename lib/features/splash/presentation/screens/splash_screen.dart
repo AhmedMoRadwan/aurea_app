@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/main_screen.dart';
-
+import '../../../onboarding/presentation/screens/onboarding_screen.dart';
 import '../widgets/cornerPainter.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,10 +21,10 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     )..repeat();
 
-    Future.delayed(const Duration(seconds: 300), () {
+    Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MainScreen()),
+          MaterialPageRoute(builder: (context) => const OnboardingScreen()),
         );
       }
     });
@@ -58,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen>
           Align(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SizedBox(
                 width: 60,
                 height: 60,
@@ -90,8 +89,8 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
 
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 130,
+                        height: 130,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white,
@@ -107,8 +106,9 @@ class _SplashScreenState extends State<SplashScreen>
                           child: Text(
                             'Aurea',
                             style: TextStyle(
+                              fontFamily: 'PlayfairDisplay',
                               fontSize: 24,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w800,
                               color: const Color(0xFFD4AF37),
                               letterSpacing: 2,
                             ),
@@ -122,6 +122,7 @@ class _SplashScreenState extends State<SplashScreen>
                   Text(
                     'AUREA',
                     style: TextStyle(
+                      fontFamily: 'PlayfairDisplay',
                       fontSize: 48,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF8B7355),
