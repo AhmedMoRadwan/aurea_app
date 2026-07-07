@@ -1,14 +1,11 @@
-
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/add_cart_button.dart';
 import '../widgets/buy_now_button.dart';
 import '../widgets/chain_divider.dart';
 import '../widgets/expandabe_description.dart';
-import '../widgets/fraction_clipper.dart';
 import '../widgets/hero_caroasal.dart';
 import '../widgets/price_row.dart';
 import '../widgets/quantity_stipper.dart';
@@ -163,7 +160,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     children: [
                       HeroCarousel(
                         bagCount: bagCount,
-                        onBack: () => showToast('Back to catalog'),
+                        onBack: ()
+                        {
+                          Navigator.pop(context);
+                        },
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
@@ -292,4 +292,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
-
