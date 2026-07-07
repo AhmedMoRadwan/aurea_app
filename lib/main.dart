@@ -7,6 +7,10 @@ import 'package:provider/provider.dart';
 import 'features/products/presentation/screens/product_details_screen.dart';
 
 
+import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+import 'package:nti_ecommerce_team4/features/splash/presentation/screens/splash_screen.dart';
+import 'package:provider/provider.dart';
+
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -26,11 +30,8 @@ class AureaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      themeMode: themeProvider.themeMode,
-      home:  const ProductDetailsScreen(),
-      routes: {
-        '/home': (context) => const MainScreen(),
-      },
+      themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
+      home: const SplashScreen(),
     );
   }
 }

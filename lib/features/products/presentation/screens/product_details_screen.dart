@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/add_cart_button.dart';
