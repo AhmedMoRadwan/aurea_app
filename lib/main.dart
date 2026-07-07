@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
-import 'package:nti_ecommerce_team4/features/splash/presentation/screens/splash_screen.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/main_screen.dart';
 import 'package:provider/provider.dart';
 
-import 'features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'features/products/presentation/screens/product_details_screen.dart';
+
 
 void main() {
   runApp(
@@ -28,7 +27,7 @@ class AureaApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeProvider.themeMode,
-      home: const ProductDetailsScreen(),
+      home:  const ProductDetailsScreen(),
       routes: {
         '/home': (context) => const MainScreen(),
       },

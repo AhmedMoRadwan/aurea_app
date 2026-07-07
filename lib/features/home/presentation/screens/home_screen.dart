@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
+import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
 import 'package:nti_ecommerce_team4/features/products/presentation/screens/admin_product_management_screen.dart';
-import 'package:nti_ecommerce_team4/features/products/presentation/screens/product_details_screen.dart';
 import 'package:nti_ecommerce_team4/features/products/presentation/screens/product_listing_screen.dart';
+
+import '../../../products/presentation/screens/product_details_screen.dart';
+
+
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           "Aurea",
           style: Theme.of(
             context,
-          ).textTheme.headlineMedium?.copyWith(color: AppColors.darkGold),
+          ).textTheme.headlineMedium?.copyWith(color: AppColors.gold),
         ),
 
         actions: [
@@ -138,3 +142,4 @@ class DevDrawer extends StatelessWidget {
     );
   }
 }
+
