@@ -24,8 +24,6 @@ class BrandNameAndSkipButton extends StatelessWidget {
               Text(
                 'AUREA',
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
                   color: const Color(0xFFD4AF37),
                   letterSpacing: 2,
                 ),
