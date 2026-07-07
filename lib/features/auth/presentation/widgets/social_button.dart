@@ -29,13 +29,7 @@ class SocialButton extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(iconPath),
-
-            const Gap(10),
-
-            Text(title, style: Theme.of(context).textTheme.labelLarge),
-          ],
+          children: [SvgPicture.asset(iconPath), const Gap(10), Text(title)],
         ),
       ),
     );

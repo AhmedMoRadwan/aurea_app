@@ -41,16 +41,6 @@ class DevDrawer extends StatelessWidget {
           ),
 
           ListTile(
-            title: const Text('Product Listing'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProductListing()),
-              );
-            },
-          ),
-
-          ListTile(
             title: const Text('Admin Product Management'),
             onTap: () {
               Navigator.push(

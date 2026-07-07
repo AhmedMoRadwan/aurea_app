@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/add_cart_button.dart';
@@ -13,9 +15,6 @@ import '../widgets/section_label.dart';
 import '../widgets/specs_acordion.dart';
 import '../widgets/title_row.dart';
 
-/// Reaches the AppColors slots ThemeData's ColorScheme/TextTheme don't have
-/// a direct home for: surfaceAlt, the muted gold-tinted label color, and a
-/// darker/paler gold derived from AppColors.gold for accents.
 extension AureaThemeX on BuildContext {
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
 
@@ -158,8 +157,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     children: [
                       HeroCarousel(
                         bagCount: bagCount,
-                        onBack: ()
-                        {
+                        onBack: () {
                           Navigator.pop(context);
                         },
                       ),

@@ -21,42 +21,40 @@ class CustomAboutUsCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Expanded(
-          child: Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: AppColors.goldSoft,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(icon, size: 30, color: AppColors.gold),
+        child: Column(
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: AppColors.goldSoft,
+                shape: BoxShape.circle,
               ),
+              child: Icon(icon, size: 30, color: AppColors.gold),
+            ),
 
-              Gap(10),
+            Gap(10),
 
-              Text(
-                title,
-                style: ThemeData().textTheme.titleLarge?.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).textTheme.titleLarge?.color,
-                ),
+            Text(
+              title,
+              style: ThemeData().textTheme.titleLarge?.copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).textTheme.titleLarge?.color,
               ),
+            ),
 
-              Gap(10),
+            Gap(10),
 
-              Text(
-                subtitle,
-                textAlign: TextAlign.center,
-                style: ThemeData().textTheme.bodyLarge?.copyWith(
-                  fontSize: 15,
-                  color: Theme.of(context).textTheme.bodyLarge?.color,
-                ),
+            Text(
+              subtitle,
+              textAlign: TextAlign.center,
+              style: ThemeData().textTheme.bodyLarge?.copyWith(
+                fontSize: 15,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
