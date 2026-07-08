@@ -7,19 +7,35 @@ class AureaTextArea extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
   final bool rtl;
-  const AureaTextArea({super.key, required this.label, required this.hint, required this.controller, this.rtl = false});
+  const AureaTextArea({
+    super.key,
+    required this.label,
+    required this.hint,
+    required this.controller,
+    this.rtl = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary = isDark
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
+    final textSecondary = isDark
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
     final borderColor = isDark ? AppColors.darkBorder : AppColors.lightBorder;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w600, color: textSecondary)),
+        Text(
+          label,
+          style: AppTextStyles.bodySmall.copyWith(
+            fontWeight: FontWeight.w600,
+            color: textSecondary,
+          ),
+        ),
         const SizedBox(height: 6),
         TextField(
           controller: controller,

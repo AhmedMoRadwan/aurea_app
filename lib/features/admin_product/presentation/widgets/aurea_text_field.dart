@@ -11,21 +11,36 @@ class AureaTextField extends StatelessWidget {
   final bool rtl;
 
   const AureaTextField({
-    super.key, required this.label, required this.hint, required this.controller,
-    this.keyboardType, this.suffix, this.rtl = false,
+    super.key,
+    required this.label,
+    required this.hint,
+    required this.controller,
+    this.keyboardType,
+    this.suffix,
+    this.rtl = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary = isDark
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
+    final textSecondary = isDark
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
     final borderColor = isDark ? AppColors.darkBorder : AppColors.lightBorder;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w600, color: textSecondary)),
+        Text(
+          label,
+          style: AppTextStyles.bodySmall.copyWith(
+            fontWeight: FontWeight.w600,
+            color: textSecondary,
+          ),
+        ),
         const SizedBox(height: 6),
         TextField(
           controller: controller,
@@ -35,7 +50,10 @@ class AureaTextField extends StatelessWidget {
           style: AppTextStyles.bodyMedium.copyWith(color: textPrimary),
           decoration: InputDecoration(
             isDense: true,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 13,
+            ),
             hintText: hint,
             hintStyle: AppTextStyles.bodyMedium.copyWith(color: textSecondary),
             suffixText: suffix,
@@ -59,4 +77,3 @@ class AureaTextField extends StatelessWidget {
     );
   }
 }
-

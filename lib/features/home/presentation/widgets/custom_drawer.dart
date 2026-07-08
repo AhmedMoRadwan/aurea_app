@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_ecommerce_team4/features/products/presentation/screens/admin_product_management_screen.dart';
+import 'package:nti_ecommerce_team4/features/admin_product/presentation/screens/admin_product_management_screen.dart';
 import 'package:nti_ecommerce_team4/features/products/presentation/screens/product_details_screen.dart';
 import 'package:nti_ecommerce_team4/features/products/presentation/screens/product_listing_screen.dart';
 

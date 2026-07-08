@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/theme/app_theme.dart';
 
 class SectionCard extends StatelessWidget {
@@ -11,7 +9,9 @@ class SectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textPrimary = isDark
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
 
     return Container(
       width: double.infinity,
@@ -19,12 +19,20 @@ class SectionCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: textPrimary.withValues(alpha: 0.02),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+        border: Border.all(
+          color: isDark ? AppColors.darkBorder : AppColors.lightBorder,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: AppTextStyles.heading3.copyWith(color: textPrimary, fontSize: 17)),
+          Text(
+            title,
+            style: AppTextStyles.heading3.copyWith(
+              color: textPrimary,
+              fontSize: 17,
+            ),
+          ),
           const SizedBox(height: 14),
           child,
         ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/add_product_list_view.dart';
+import 'package:nti_ecommerce_team4/features/admin_product/presentation/widgets/add_product_list_view.dart';
+
+import 'add_product_screen.dart';
 
 class AdminProductManagement extends StatelessWidget {
   const AdminProductManagement({super.key});
@@ -10,7 +12,12 @@ class AdminProductManagement extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddProductPage()),
+          );
+        },
         shape: CircleBorder(),
         child: Icon(Icons.add),
       ),

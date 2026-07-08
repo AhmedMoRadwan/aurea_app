@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/add_product_app_bar.dart';
@@ -26,7 +25,16 @@ class _AddProductPageState extends State<AddProductPage> {
 
   @override
   void dispose() {
-    for (final c in [sellerId, nameEn, nameAr, price, stock, color, descEn, descAr]) {
+    for (final c in [
+      sellerId,
+      nameEn,
+      nameAr,
+      price,
+      stock,
+      color,
+      descEn,
+      descAr,
+    ]) {
       c.dispose();
     }
     super.dispose();
@@ -37,12 +45,20 @@ class _AddProductPageState extends State<AddProductPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: isDark ? AppColors.lightSurface : AppColors.darkSurface,
+        backgroundColor: isDark
+            ? AppColors.lightSurface
+            : AppColors.darkSurface,
         content: Text(
           'Product saved',
-          style: (isDark ? AppTextStyles.bodyMedium.copyWith(color: AppColors.lightTextPrimary) 
-                         : AppTextStyles.bodyMedium.copyWith(color: AppColors.darkTextPrimary))
-                .copyWith(fontWeight: FontWeight.w600),
+          style:
+              (isDark
+                      ? AppTextStyles.bodyMedium.copyWith(
+                          color: AppColors.lightTextPrimary,
+                        )
+                      : AppTextStyles.bodyMedium.copyWith(
+                          color: AppColors.darkTextPrimary,
+                        ))
+                  .copyWith(fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -72,23 +88,47 @@ class _AddProductPageState extends State<AddProductPage> {
                       title: 'Basic Information',
                       child: Column(
                         children: [
-                          AureaTextField(label: 'Seller ID', hint: 'e.g. d051dbf3...', controller: sellerId),
-                          const SizedBox(height: 14),
-                          AureaTextField(label: 'Product Name', hint: 'e.g. Aurelia...', controller: nameEn),
-                          const SizedBox(height: 14),
-                          AureaTextField(label: 'Product Name (Arabic)', hint: 'اسم المنتج', controller: nameAr, rtl: true),
+                          AureaTextField(
+                            label: 'Seller ID',
+                            hint: 'e.g. d051dbf3...',
+                            controller: sellerId,
+                          ),
                           const SizedBox(height: 14),
                           AureaTextField(
-                            label: 'Price (SAR)', 
-                            hint: '0.00', 
-                            controller: price, 
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            label: 'Product Name',
+                            hint: 'e.g. Aurelia...',
+                            controller: nameEn,
+                          ),
+                          const SizedBox(height: 14),
+                          AureaTextField(
+                            label: 'Product Name (Arabic)',
+                            hint: 'اسم المنتج',
+                            controller: nameAr,
+                            rtl: true,
+                          ),
+                          const SizedBox(height: 14),
+                          AureaTextField(
+                            label: 'Price (SAR)',
+                            hint: '0.00',
+                            controller: price,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
                             suffix: 'SAR',
                           ),
                           const SizedBox(height: 14),
-                          AureaTextField(label: 'Stock', hint: '1', controller: stock, keyboardType: TextInputType.number),
+                          AureaTextField(
+                            label: 'Stock',
+                            hint: '1',
+                            controller: stock,
+                            keyboardType: TextInputType.number,
+                          ),
                           const SizedBox(height: 14),
-                          AureaTextField(label: 'Color', hint: 'e.g. 18K Yellow Gold', controller: color),
+                          AureaTextField(
+                            label: 'Color',
+                            hint: 'e.g. 18K Yellow Gold',
+                            controller: color,
+                          ),
                         ],
                       ),
                     ),
@@ -97,9 +137,18 @@ class _AddProductPageState extends State<AddProductPage> {
                       title: 'Product Narrative',
                       child: Column(
                         children: [
-                          AureaTextArea(label: 'Description', hint: 'Describe the craftsmanship...', controller: descEn),
+                          AureaTextArea(
+                            label: 'Description',
+                            hint: 'Describe the craftsmanship...',
+                            controller: descEn,
+                          ),
                           const SizedBox(height: 14),
-                          AureaTextArea(label: 'Description (Arabic)', hint: 'وصف المنتج...', controller: descAr, rtl: true),
+                          AureaTextArea(
+                            label: 'Description (Arabic)',
+                            hint: 'وصف المنتج...',
+                            controller: descAr,
+                            rtl: true,
+                          ),
                         ],
                       ),
                     ),
@@ -111,14 +160,20 @@ class _AddProductPageState extends State<AddProductPage> {
                         onPressed: _save,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.gold,
-                          foregroundColor: isDark ? AppColors.darkBackground : AppColors.white,
+                          foregroundColor: isDark
+                              ? AppColors.darkBackground
+                              : AppColors.white,
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                         child: Text(
                           'Save Product',
                           style: AppTextStyles.buttonText.copyWith(
-                            color: isDark ? AppColors.darkBackground : AppColors.white,
+                            color: isDark
+                                ? AppColors.darkBackground
+                                : AppColors.white,
                           ),
                         ),
                       ),

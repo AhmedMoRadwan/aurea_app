@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CollectionsGridView extends StatelessWidget {
   const CollectionsGridView({super.key});
 

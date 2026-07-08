@@ -14,7 +14,6 @@ class Textfield extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
 
           borderSide: BorderSide.none,
-
         ),
 
         focusedBorder: OutlineInputBorder(
@@ -23,7 +22,7 @@ class Textfield extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
 
-        prefixIcon: Icon(icon,size: 22,),
+        prefixIcon: Icon(icon, size: 22),
 
         hint: Text(
           hint,
@@ -31,7 +30,7 @@ class Textfield extends StatelessWidget {
             fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: const Color.fromARGB(255, 107, 106, 106)
+            color: const Color.fromARGB(255, 107, 106, 106),
           ),
         ),
       ),

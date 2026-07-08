@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-import 'package:nti_ecommerce_team4/features/categories/presentation/widget/collections_gridview.dart';
-import 'package:nti_ecommerce_team4/features/categories/presentation/widget/textfield.dart';
+import 'package:nti_ecommerce_team4/features/categories/presentation/widgets/collections_gridview.dart';
+import 'package:nti_ecommerce_team4/features/categories/presentation/widgets/textfield.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
 
 class CategorieScreen extends StatefulWidget {
@@ -12,11 +12,9 @@ class CategorieScreen extends StatefulWidget {
 }
 
 class _CategorieScreenState extends State<CategorieScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       // backgroundColor: Color(0xffFBF9F9),
       drawer: const DevDrawer(),
 
@@ -24,7 +22,7 @@ class _CategorieScreenState extends State<CategorieScreen> {
         iconTheme: IconThemeData(
           color: const Color.fromARGB(255, 158, 125, 16),
         ),
-        
+
         title: Text(
           "AUREA",
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -82,8 +80,7 @@ class _CategorieScreenState extends State<CategorieScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 15,
             children: [
-
-              SizedBox(height: 8,),
+              SizedBox(height: 8),
 
               Text(
                 'Collections',
@@ -104,5 +101,4 @@ class _CategorieScreenState extends State<CategorieScreen> {
       ),
     );
   }
-  
 }

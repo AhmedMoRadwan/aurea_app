@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_theme.dart';
@@ -11,7 +10,9 @@ class AddProductAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textPrimary = isDark
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 10, 16, 10),
@@ -32,6 +33,3 @@ class AddProductAppBar extends StatelessWidget {
     );
   }
 }
-
-
-
