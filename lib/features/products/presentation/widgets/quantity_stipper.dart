@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/features/products/presentation/widgets/section_label.dart';
 

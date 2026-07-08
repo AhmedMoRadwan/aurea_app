@@ -8,7 +8,7 @@ class RelatedCard extends StatefulWidget {
   final void Function(String name) onQuickAdd;
   final VoidCallback onQuickRemove;
 
-  const RelatedCard({
+  const RelatedCard({super.key, 
     required this.item,
     required this.onQuickAdd,
     required this.onQuickRemove,
