@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
+import 'package:nti_ecommerce_team4/features/admin_product/presentation/screens/add_product_screen.dart';
+import 'package:nti_ecommerce_team4/main_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:nti_ecommerce_team4/features/splash/presentation/screens/splash_screen.dart';
 
