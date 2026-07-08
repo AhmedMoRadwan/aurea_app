@@ -23,6 +23,7 @@ class AddProductListview extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
+                  spacing: 15,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
@@ -33,9 +34,9 @@ class AddProductListview extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(width: 15),
                     Expanded(
                       child: Column(
+                        spacing: 3,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -48,7 +49,6 @@ class AddProductListview extends StatelessWidget {
                                   fontFamily: 'PlayfairDisplay',
                                 ),
                           ),
-                          const SizedBox(height: 3),
                           Text(
                             "\$1,240.00",
                             style: theme.textTheme.headlineSmall?.copyWith(
@@ -56,7 +56,6 @@ class AddProductListview extends StatelessWidget {
                               color: theme.colorScheme.primary,
                             ),
                           ),
-                          const SizedBox(height: 3),
                           Text(
                             "In Stock: 12 units",
                             style: theme.textTheme.bodySmall,
@@ -64,7 +63,6 @@ class AddProductListview extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 15),
                     IconButton(
                       onPressed: () {},
                       icon: SvgPicture.asset(
