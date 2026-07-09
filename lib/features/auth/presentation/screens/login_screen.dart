@@ -17,7 +17,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.lightSurface,
       body: SingleChildScrollView(
         child: SafeArea(
           // minimum: const EdgeInsets.only(left: 20, right: 20, top: 50),
