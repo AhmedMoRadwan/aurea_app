@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
+import 'package:nti_ecommerce_team4/features/categories/presentation/cubits/categories_cubit.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widgets/collections_gridview.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/widgets/textfield.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/drawer.dart';
@@ -94,7 +96,12 @@ class _CategorieScreenState extends State<CategorieScreen> {
               Textfield(icon: Icons.search, hint: 'Search our archives...'),
 
               SizedBox(height: 5),
-              Expanded(child: CollectionsGridView()),
+              Expanded(
+                child: BlocProvider(
+                  create: (context) => CategoriesCubit()..getCategories(),
+                  child: CollectionsGridView(),
+                ),
+              ),
             ],
           ),
         ),
