@@ -46,7 +46,7 @@ class AuthRemoteDataSource {
       data: {"email": email},
     );
 
-    return MessageResponseModel(message: response.data["message"]);
+    return MessageResponseModel(message: response.data.toString());
   }
 
   //? validate otp
@@ -73,6 +73,6 @@ class AuthRemoteDataSource {
       data: {"email": email, "otp": otp, "newPassword": newPassword},
     );
 
-    return MessageResponseModel.fromJson(response.data);
+    return MessageResponseModel(message: response.data);
   }
 }

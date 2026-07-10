@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:nti_ecommerce_team4/features/auth/data/auth_repo/auth_repo.dart';
+import 'package:nti_ecommerce_team4/features/auth/data/date_source/auth_remote_data_source.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_cubit.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_state.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/screens/create_new_password_screen.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_appbar.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_header.dart';
@@ -7,10 +12,12 @@ import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_bu
 import '../widgets/otp_input_section.dart';
 
 class VerificationOtpScreen extends StatelessWidget {
-  const VerificationOtpScreen({super.key});
+  const VerificationOtpScreen({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    String? otp;
     return Scaffold(
       appBar: const AuthAppbar(),
       body: SingleChildScrollView(
@@ -30,7 +37,11 @@ class VerificationOtpScreen extends StatelessWidget {
               //* Verification Code
               OtpInputSection(
                 onCompleted: (code) {
-                  print(code);
+                  context.read<AuthCubit>().validateOtp(
+                    email: email,
+                    otp: code,
+                  );
+                  otp = code;
                 },
                 onResend: () {
                   // API
@@ -38,15 +49,46 @@ class VerificationOtpScreen extends StatelessWidget {
               ),
 
               //* Verify Button
-              CustomButton(
-                buttonText: 'Verify',
-                onButtonPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CreateNewPasswordScreen(),
-                    ),
-                  );
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  if (state is AuthErrorState) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.errorMessage),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  } else if (state is AuthSuccessState) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BlocProvider(
+                          create: (context) =>
+                              AuthCubit(AuthRepo(AuthRemoteDataSource())),
+                          child: CreateNewPasswordScreen(
+                            email: email,
+                            otp: otp!,
+                          ),
+                        ),
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("OTP is valid."),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state is AuthLoadingState) {
+                    return Center(child: CircularProgressIndicator());
+                  } else {
+                    return CustomButton(
+                      buttonText: 'Verify',
+                      onButtonPressed: () {},
+                    );
+                  }
                 },
               ),
 

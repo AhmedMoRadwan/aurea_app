@@ -143,8 +143,12 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ForgetPasswordScreen(),
+                                    builder: (context) => BlocProvider(
+                                      create: (context) => AuthCubit(
+                                        AuthRepo(AuthRemoteDataSource()),
+                                      ),
+                                      child: const ForgetPasswordScreen(),
+                                    ),
                                   ),
                                 );
                               },

@@ -8,7 +8,7 @@ import 'package:nti_ecommerce_team4/features/auth/data/auth_repo/auth_repo.dart'
 import 'package:nti_ecommerce_team4/features/auth/data/date_source/auth_remote_data_source.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_cubit.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_state.dart';
-import 'package:nti_ecommerce_team4/features/auth/presentation/screens/login_screen.dart';
+//import 'package:nti_ecommerce_team4/features/auth/presentation/screens/login_screen.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/screens/verify_email_screen.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_divider.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_button.dart';

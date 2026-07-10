@@ -96,8 +96,8 @@ class _OtpInputSectionState extends State<OtpInputSection> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(widget.length, (index) {
             return SizedBox(
-              width: 45,
-              height: 50,
+              width: 50,
+              height: 60,
               child: TextField(
                 controller: controllers[index],
                 focusNode: focusNodes[index],
@@ -105,7 +105,7 @@ class _OtpInputSectionState extends State<OtpInputSection> {
                 keyboardType: TextInputType.number,
                 maxLength: 1,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
                 decoration: InputDecoration(
