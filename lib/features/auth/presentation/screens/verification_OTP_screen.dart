@@ -22,8 +22,9 @@ class VerificationOtpScreen extends StatelessWidget {
               //* AuthHeader
               const AuthHeader(
                 title: 'Verification',
-                subtitle: 'Enter the 4-digit code sent to your email.',
+                subtitle: 'Enter the 6-digit code sent to your email.',
               ),
+
               const Gap(40),
 
               //* Verification Code

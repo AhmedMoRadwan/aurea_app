@@ -4,6 +4,7 @@ import 'package:nti_ecommerce_team4/features/auth/data/models/message_response_m
 import '../../../../core/network/dio_helper.dart';
 
 class AuthRemoteDataSource {
+  //? login
   Future<LoginResponseModel> login({
     required String email,
     required String password,
@@ -16,48 +17,59 @@ class AuthRemoteDataSource {
     return LoginResponseModel.fromJson(response.data);
   }
 
+  //? register
   Future<MessageResponseModel> register({
     required Map<String, dynamic> data,
   }) async {
-    final response = await DioHelper.post(url: "/Auth/register", data: data);
+    final response = await DioHelper.post(url: "auth/register", data: data);
 
     return MessageResponseModel(message: response.data["message"]);
   }
 
-  Future<MessageResponseModel> verifyEmail({required String otp}) async {
+  //? verify email
+  Future<MessageResponseModel> verifyEmail({
+    required String otp,
+    required String email,
+  }) async {
     final response = await DioHelper.post(
-      url: "/Auth/verify-email",
-      data: {"otp": otp},
+      url: "auth/verify-email",
+      data: {"otp": otp, "email": email},
     );
 
     return MessageResponseModel(message: response.data);
   }
 
+  //? forgot password
   Future<MessageResponseModel> forgotPassword({required String email}) async {
     final response = await DioHelper.post(
-      url: "/Auth/forgot-password",
+      url: "auth/forgot-password",
       data: {"email": email},
     );
 
     return MessageResponseModel(message: response.data["message"]);
   }
 
-  Future<MessageResponseModel> validateOtp({required String otp}) async {
+  //? validate otp
+  Future<MessageResponseModel> validateOtp({
+    required String otp,
+    required String email,
+  }) async {
     final response = await DioHelper.post(
-      url: "/Auth/validate-otp",
-      data: {"otp": otp},
+      url: "auth/validate-otp",
+      data: {"otp": otp, "email": email},
     );
 
     return MessageResponseModel(message: response.data);
   }
 
+  //? reset password
   Future<MessageResponseModel> resetPassword({
     required String email,
     required String otp,
     required String newPassword,
   }) async {
     final response = await DioHelper.post(
-      url: "/Auth/reset-password",
+      url: "auth/reset-password",
       data: {"email": email, "otp": otp, "newPassword": newPassword},
     );
 
