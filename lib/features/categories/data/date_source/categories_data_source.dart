@@ -13,7 +13,7 @@ Future<List<CategoriesModel>> getCategories() async {
       "https://accessories-eshop.runasp.net/api/categories",
       options: Options(
         headers: {
-          '':'Bearer '
+          "Authorization": "Bearer "
         }
       )
     );

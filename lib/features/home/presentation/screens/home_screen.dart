@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nti_ecommerce_team4/features/categories/presentation/cubits/categories_cubit.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
@@ -103,7 +105,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                    SizedBox(height: 120, child: ExploreListView()),
+                    BlocProvider(
+                      create: (context) => CategoriesCubit()..getCategories(),
+                      child: SizedBox(height: 120, child: ExploreListView()),
+                    ),
                   ],
                 ),
 
