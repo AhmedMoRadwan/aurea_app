@@ -13,7 +13,7 @@ class SparklePainter extends CustomPainter {
     if (progress <= 0 || progress >= 1) return;
     final center = size.center(Offset.zero);
     final paint = Paint()
-      ..color = color.withOpacity((1 - progress).clamp(0, 1));
+      ..color = color.withValues(alpha: (1 - progress).clamp(0, 1));
     const count = 8;
     final dist = 14 + progress * 16;
     for (int i = 0; i < count; i++) {

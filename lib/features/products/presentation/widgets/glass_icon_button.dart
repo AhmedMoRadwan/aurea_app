@@ -30,9 +30,9 @@ class _GlassIconButtonState extends State<GlassIconButton> {
           width: 38,
           height: 38,
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.35),
+            color: Colors.black.withValues(alpha: 0.35),
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.white.withOpacity(0.18)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
           ),
           child: Icon(widget.icon, color: AppColors.white, size: 18),
         ),

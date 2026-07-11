@@ -11,11 +11,7 @@ Future<List<ProductsModel>> getProducts() async {
   try {
     final response = await dio.get(
       "https://accessories-eshop.runasp.net/api/products",
-      options: Options(
-        headers: {
-          "Authorization": "Bearer "
-        }
-      )
+     
     );
 
     final List data =response.data["items"];
@@ -24,7 +20,11 @@ Future<List<ProductsModel>> getProducts() async {
         .map((e) => ProductsModel.fromJson(e))
         .toList();
   } catch (e) {
-    log(e.toString());
+    if (e is DioException) {
+    log("Status Code: ${e.response?.statusCode}");
+    log("Response: ${e.response?.data}");
+  }
+  else {log("$e");}
     rethrow;
   }
 }}

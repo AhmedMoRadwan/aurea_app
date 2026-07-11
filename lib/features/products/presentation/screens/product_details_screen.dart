@@ -53,7 +53,7 @@ extension AureaThemeX on BuildContext {
 
   Color get success => AppColors.success;
 
-  Color get successBg => AppColors.success.withOpacity(isDark ? 0.18 : 0.12);
+  Color get successBg => AppColors.success.withValues(alpha: isDark ? 0.18 : 0.12);
 }
 
 const heroImages = [
@@ -142,8 +142,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   borderRadius: BorderRadius.circular(34),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(
-                        context.isDark ? 0.55 : 0.18,
+                      color: Colors.black.withValues(
+                        alpha: context.isDark ? 0.55 : 0.18,
                       ),
                       blurRadius: 45,
                       offset: const Offset(0, 20),
