@@ -5,7 +5,8 @@ import 'package:nti_ecommerce_team4/features/products/presentation/widgets/spark
 import '../screens/product_details_screen.dart';
 
 class TitleRow extends StatelessWidget {
-  const TitleRow({super.key});
+  final String name;
+  const TitleRow({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +18,21 @@ class TitleRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Ethereal Diamond\nNecklace',
+                name,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 4),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Text(
-                  'عقد الألماس الأثيري',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 14.5,
-                    fontWeight: FontWeight.w600,
-                    color: context.textSecondary,
-                  ),
-                ),
-              ),
+              // Directionality(
+              //   textDirection: TextDirection.rtl,
+              //   child: Text(
+              //     'عقد الألماس الأثيري',
+              //     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              //       fontSize: 14.5,
+              //       fontWeight: FontWeight.w600,
+              //       color: context.textSecondary,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

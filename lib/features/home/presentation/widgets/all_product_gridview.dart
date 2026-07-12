@@ -32,7 +32,7 @@ class AllProductGridView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ProductDetailsScreen(),
+                  builder: (context) => const ProductDetailsScreen(productId: '123e4567-e89b-12d3-a456-426614174000'),
                 ),
               );
             },

@@ -6,6 +6,10 @@ class ProductItem extends StatelessWidget {
   final String subtitle;
   final String price;
   final String imageUrl;
+  final int quantity;
+  final VoidCallback? onAdd;
+  final VoidCallback? onRemove;
+  final VoidCallback? onDelete;
 
   const ProductItem({
     super.key,
@@ -13,10 +17,16 @@ class ProductItem extends StatelessWidget {
     required this.subtitle,
     required this.price,
     required this.imageUrl,
+    this.quantity = 1,
+    this.onAdd,
+    this.onRemove,
+    this.onDelete,
   });
 
   @override
   Widget build(BuildContext context) {
+    bool isAsset = imageUrl.startsWith('assets/');
+
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -28,24 +38,36 @@ class ProductItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                imageUrl,
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+              child: isAsset
+                  ? Image.asset(
+                      imageUrl,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.network(
+                      imageUrl,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        height: 200,
+                        color: Colors.grey[200],
+                        child: const Icon(Icons.broken_image, size: 50),
+                      ),
+                    ),
             ),
-
             const SizedBox(height: 10),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Text(
@@ -58,13 +80,9 @@ class ProductItem extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 8),
-
             Text(subtitle, style: const TextStyle(fontSize: 14)),
-
             const SizedBox(height: 10),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -75,7 +93,6 @@ class ProductItem extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      // color: Colors.amber.shade50,
                       border: Border.all(
                         color: Colors.amber.shade100,
                         width: 1,
@@ -88,26 +105,25 @@ class ProductItem extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.remove, size: 25),
-                          onPressed: () {},
+                          onPressed: onRemove,
                         ),
-                        const Text(
-                          "1",
-                          style: TextStyle(
+                        Text(
+                          "$quantity",
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         IconButton(
                           icon: const Icon(Icons.add, size: 25),
-                          onPressed: () {},
+                          onPressed: onAdd,
                         ),
                       ],
                     ),
                   ),
                 ),
-                Gap(70),
-
-                IconButton(icon: const Icon(Icons.close), onPressed: () {}),
+                const Gap(70),
+                IconButton(icon: const Icon(Icons.close), onPressed: onDelete),
               ],
             ),
           ],

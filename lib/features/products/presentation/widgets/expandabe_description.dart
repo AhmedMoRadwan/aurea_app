@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../screens/product_details_screen.dart';
 
 class ExpandableDescription extends StatefulWidget {
-  const ExpandableDescription({super.key});
+  final String description;
+  const ExpandableDescription({super.key, required this.description});
 
   @override
   State<ExpandableDescription> createState() => _ExpandableDescriptionState();
@@ -11,11 +12,6 @@ class ExpandableDescription extends StatefulWidget {
 
 class _ExpandableDescriptionState extends State<ExpandableDescription> {
   bool expanded = false;
-
-  static const en =
-      'Handcrafted with meticulous precision, the Ethereal Diamond Necklace features a brilliant-cut center stone suspended in a halo of ethically sourced pavé diamonds. A symbol of eternal grace and modern luxury. Each piece is finished by hand in our Cairo atelier and comes with a certificate of authenticity.';
-  static const ar =
-      'يتميز عقد الألماس الأثيري المصنوع يدويًا بدقة بحجر مركزي مبهر مقطوع بريليانت، محاط بهالة من الألماس المرصوف المستمد أخلاقيًا، رمزًا للأناقة الأبدية والرفاهية العصرية.';
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +21,12 @@ class _ExpandableDescriptionState extends State<ExpandableDescription> {
       color: context.textSecondary,
       overflow: TextOverflow.ellipsis,
     );
-    final bodyStyleAr = Theme.of(context).textTheme.bodyMedium?.copyWith(
-      fontSize: 13.3,
-      height: 1.9,
-      color: context.textSecondary,
-      overflow: TextOverflow.fade,
-    );
+    // final bodyStyleAr = Theme.of(context).textTheme.bodyMedium?.copyWith(
+    //   fontSize: 13.3,
+    //   height: 1.9,
+    //   color: context.textSecondary,
+    //   overflow: TextOverflow.fade,
+    // );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,14 +41,14 @@ class _ExpandableDescriptionState extends State<ExpandableDescription> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(en, style: bodyStyle),
-                  if (expanded) ...[
-                    const SizedBox(height: 10),
-                    Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Text(ar, style: bodyStyleAr),
-                    ),
-                  ],
+                  Text(widget.description, style: bodyStyle),
+                  // if (expanded) ...[
+                  //   const SizedBox(height: 10),
+                  //   Directionality(
+                  //     textDirection: TextDirection.rtl,
+                  //     child: Text(ar, style: bodyStyleAr),
+                  //   ),
+                  // ],
                 ],
               ),
             ),
