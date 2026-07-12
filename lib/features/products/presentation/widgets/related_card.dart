@@ -59,7 +59,7 @@ class _RelatedCardState extends State<RelatedCard> {
                     decoration: BoxDecoration(
                       color: added
                           ? context.success
-                          : Colors.white.withOpacity(0.9),
+                          : Colors.white.withValues(alpha: 0.9),
                       shape: BoxShape.circle,
                       boxShadow: const [
                         BoxShadow(color: Color(0x26000000), blurRadius: 6),

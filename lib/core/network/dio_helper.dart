@@ -27,6 +27,8 @@ class DioHelper {
       ),
     );
 
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
@@ -50,7 +52,7 @@ class DioHelper {
           if (error.response?.data != null) {
             final apiError = ApiErrorModel.fromJson(error.response!.data);
 
-            print(apiError.firstErrorMessage);
+            print(apiError.message);
           }
 
           return handler.next(error);
