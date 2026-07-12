@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:nti_ecommerce_team4/core/network/token_manager.dart';
 import 'package:nti_ecommerce_team4/features/categories/data/models/categories_model.dart'; 
 
 class CategoriesDataSource {
@@ -9,11 +10,14 @@ class CategoriesDataSource {
 Future<List<CategoriesModel>> getCategories() async {
  
   try {
+
+    final token = await TokenManager.getToken();
+    log("token is : $token");
     final response = await dio.get(
       "https://accessories-eshop.runasp.net/api/categories",
       options: Options(
         headers: {
-          "Authorization": "Bearer "
+          "Authorization": "Bearer $token"
         }
       )
     );

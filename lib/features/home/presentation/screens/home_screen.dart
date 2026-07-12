@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nti_ecommerce_team4/features/categories/presentation/cubits/categories_cubit.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_cubit.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/cubits/offers_cubit/offers_cubit.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_cubit/products_cubit.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/all_product_gridview.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/custom_drawer.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/widgets/explore_listview.dart';
@@ -85,11 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 40,
+              spacing: 25,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: OfferSection(),
+                  child: BlocProvider(
+                    create: (context) => OffersCubit()..getOffers(),
+                    child: OfferSection(),
+                  ),
                 ),
 
                 Column(

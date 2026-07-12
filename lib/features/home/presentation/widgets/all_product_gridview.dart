@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_cubit.dart';
-import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_states.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_cubit/products_cubit.dart';
+import 'package:nti_ecommerce_team4/features/home/presentation/cubits/products_cubit/products_states.dart';
 
 import '../../../products/presentation/screens/product_details_screen.dart';
 
