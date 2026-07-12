@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:nti_ecommerce_team4/features/auth/data/auth_repo/auth_repo.dart';
 import 'package:nti_ecommerce_team4/features/auth/data/date_source/auth_remote_data_source.dart';
+// import 'package:nti_ecommerce_team4/features/auth/data/auth_repo/auth_repo.dart';
+// import 'package:nti_ecommerce_team4/features/auth/data/date_source/auth_remote_data_source.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_cubit.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_state.dart';
 import 'package:nti_ecommerce_team4/features/auth/presentation/screens/create_new_password_screen.dart';
@@ -11,10 +13,15 @@ import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/auth_head
 import 'package:nti_ecommerce_team4/features/auth/presentation/widgets/custom_button.dart';
 import '../widgets/otp_input_section.dart';
 
-class VerificationOtpScreen extends StatelessWidget {
+class VerificationOtpScreen extends StatefulWidget {
   const VerificationOtpScreen({super.key, required this.email});
   final String email;
 
+  @override
+  State<VerificationOtpScreen> createState() => _VerificationOtpScreenState();
+}
+
+class _VerificationOtpScreenState extends State<VerificationOtpScreen> {
   @override
   Widget build(BuildContext context) {
     String? otp;
@@ -37,14 +44,10 @@ class VerificationOtpScreen extends StatelessWidget {
               //* Verification Code
               OtpInputSection(
                 onCompleted: (code) {
-                  context.read<AuthCubit>().validateOtp(
-                    email: email,
-                    otp: code,
-                  );
                   otp = code;
                 },
                 onResend: () {
-                  // API
+                  context.read<AuthCubit>().resendOtp(email: widget.email);
                 },
               ),
 
@@ -58,15 +61,16 @@ class VerificationOtpScreen extends StatelessWidget {
                         backgroundColor: Colors.red,
                       ),
                     );
-                  } else if (state is AuthSuccessState) {
+                  } else if (state is OTPSuccessState) {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => BlocProvider(
                           create: (context) =>
                               AuthCubit(AuthRepo(AuthRemoteDataSource())),
+
                           child: CreateNewPasswordScreen(
-                            email: email,
+                            email: widget.email,
                             otp: otp!,
                           ),
                         ),
@@ -74,7 +78,10 @@ class VerificationOtpScreen extends StatelessWidget {
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text("OTP is valid."),
+                        content: Text(
+                          state.msg.message,
+                          // "OTP is valid."
+                        ),
                         backgroundColor: Colors.green,
                       ),
                     );
@@ -86,7 +93,12 @@ class VerificationOtpScreen extends StatelessWidget {
                   } else {
                     return CustomButton(
                       buttonText: 'Verify',
-                      onButtonPressed: () {},
+                      onButtonPressed: () {
+                        context.read<AuthCubit>().validateOtp(
+                          email: widget.email,
+                          otp: otp!,
+                        );
+                      },
                     );
                   }
                 },

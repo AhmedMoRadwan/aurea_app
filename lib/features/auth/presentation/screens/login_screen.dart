@@ -49,117 +49,112 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
       child: SafeArea(
         child: Form(
           key: myKey,
-          child: BlocConsumer<AuthCubit, AuthState>(
-            listener: (context, state) {
-              if (state is AuthSuccessState) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Welcome back bro'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              }
-              if (state is AuthErrorState) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(state.errorMessage),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
-            builder: (context, state) {
-              if (state is AuthLoadingState) {
-                return const Center(child: CircularProgressIndicator());
-              } else {
-                return Column(
+          child: Column(
+            children: [
+              const Gap(50),
+              //* AuthHeader
+              const Image(
+                image: AssetImage('assets/images/logo.png'),
+                height: 130,
+                width: 130,
+              ),
+
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
+                decoration: BoxDecoration(
+                  // color: AppColors.lightBackground,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: AppColors.lightBorder),
+                ),
+                child: Column(
                   children: [
-                    const Gap(50),
-                    //* AuthHeader
-                    const Image(
-                      image: AssetImage('assets/images/logo.png'),
-                      height: 130,
-                      width: 130,
+                    const Gap(25),
+                    const AuthHeader(
+                      title: 'Welcome Back',
+                      subtitle: '''Sign in to continue your luxury shopping
+                                 experience.''',
+                    ),
+                    const Gap(25),
+
+                    //* Email TextFormField
+                    CustomTextFormField(
+                      controller: emailController,
+                      labelText: 'Email',
+                      prefixIcon: Icons.email,
+                      validator: (email) {
+                        return Validator.validateEmail(email!);
+                      },
                     ),
 
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      margin: EdgeInsets.symmetric(
-                        vertical: 40,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        // color: AppColors.lightBackground,
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: AppColors.lightBorder),
-                      ),
-                      child: Column(
-                        children: [
-                          const Gap(25),
-                          const AuthHeader(
-                            title: 'Welcome Back',
-                            subtitle:
-                                '''Sign in to continue your luxury shopping
-                                 experience.''',
-                          ),
-                          const Gap(25),
+                    const Gap(25),
 
-                          //* Email TextFormField
-                          CustomTextFormField(
-                            controller: emailController,
-                            labelText: 'Email',
-                            prefixIcon: Icons.email,
-                            validator: (email) {
-                              return Validator.validateEmail(email!);
-                            },
-                          ),
+                    //* Password TextFormField
+                    CustomTextFormField(
+                      controller: passwordController,
+                      labelText: 'Password',
+                      prefixIcon: Icons.lock,
+                      suffixIcon: Icons.visibility,
+                      validator: (password) {
+                        return Validator.validatePassword(password!);
+                      },
+                    ),
+                    const Gap(5),
 
-                          const Gap(25),
-
-                          //* Password TextFormField
-                          CustomTextFormField(
-                            controller: passwordController,
-                            labelText: 'Password',
-                            prefixIcon: Icons.lock,
-                            suffixIcon: Icons.visibility,
-                            validator: (password) {
-                              return Validator.validatePassword(password!);
-                            },
-                          ),
-                          const Gap(5),
-
-                          //* Forget Password
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BlocProvider(
-                                      create: (context) => AuthCubit(
-                                        AuthRepo(AuthRemoteDataSource()),
-                                      ),
-                                      child: const ForgetPasswordScreen(),
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: const Text('Forget Password?'),
+                    //* Forget Password
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (context) =>
+                                    AuthCubit(AuthRepo(AuthRemoteDataSource())),
+                                child: const ForgetPasswordScreen(),
+                              ),
                             ),
-                          ),
+                          );
+                        },
+                        child: const Text('Forget Password?'),
+                      ),
+                    ),
 
-                          const Gap(25),
-
+                    const Gap(25),
+                    BlocConsumer<AuthCubit, AuthState>(
+                      listener: (context, state) {
+                        if (state is AuthSuccessState) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainScreen(),
+                            ),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Welcome back bro'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        }
+                        if (state is AuthErrorState) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(state.errorMessage),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is AuthLoadingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else {
                           //* Login Button
-                          CustomButton(
+                          return CustomButton(
                             buttonText: 'LOGIN',
                             onButtonPressed: () {
                               context.read<AuthCubit>().login(
@@ -167,43 +162,43 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                                 password: passwordController.text,
                               );
                             },
-                          ),
-
-                          const Gap(25),
-
-                          //* Alternative Login Options
-                          const AuthDivider(dividerText: 'OR CONTINUE WITH'),
-
-                          const Gap(25),
-
-                          //* Social Auth Section
-                          const SocialAuthSection(),
-
-                          const Gap(25),
-
-                          //* Dont have an account
-                          AuthRedirectText(
-                            question: 'Don\'t have an account?',
-                            actionText: 'Sign Up  ',
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignupScreen(),
-                                ),
-                              );
-                            },
-                          ),
-
-                          const Gap(30),
-                        ],
-                      ),
+                          );
+                        }
+                      },
                     ),
-                    const Gap(50),
+
+                    const Gap(25),
+
+                    //* Alternative Login Options
+                    const AuthDivider(dividerText: 'OR CONTINUE WITH'),
+
+                    const Gap(25),
+
+                    //* Social Auth Section
+                    const SocialAuthSection(),
+
+                    const Gap(25),
+
+                    //* Dont have an account
+                    AuthRedirectText(
+                      question: 'Don\'t have an account?',
+                      actionText: 'Sign Up  ',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const Gap(30),
                   ],
-                );
-              }
-            },
+                ),
+              ),
+              const Gap(50),
+            ],
           ),
         ),
       ),

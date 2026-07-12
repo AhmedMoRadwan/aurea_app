@@ -95,4 +95,14 @@ class AuthRepo {
       throw ApiException(error.errorMessage);
     }
   }
+
+  Future<MessageResponseModel> resendOtp({required String email}) async {
+    try {
+      return await remoteDataSource.resendOtp(email: email);
+    } on DioException catch (e) {
+      final error = ApiErrorModel.fromJson(e.response?.data ?? {});
+
+      throw ApiException(error.errorMessage);
+    }
+  }
 }

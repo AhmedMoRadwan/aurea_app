@@ -68,7 +68,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             backgroundColor: Colors.red,
                           ),
                         );
-                      } else if (state is AuthSuccessState) {
+                      } else if (state is ForgetSuccessState) {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -84,7 +84,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              "If the email is registered, you will receive an OTP to reset your password.",
+                              state.msg.message,
+                              //"If the email is registered, you will receive an OTP to reset your password.",
                             ),
                             backgroundColor: Colors.green,
                           ),

@@ -2,7 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_cubit.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/cubits/auth_state.dart';
 
 class OtpInputSection extends StatefulWidget {
   const OtpInputSection({
@@ -156,12 +160,40 @@ class _OtpInputSectionState extends State<OtpInputSection> {
             ),
           )
         else
-          TextButton(
-            onPressed: () {
-              widget.onResend();
-              startTimer();
+          BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is ResendOtpFailureState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.errorMessage),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              } else if (state is ResendOtpSuccessState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.msg.message),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+                startTimer();
+              }
             },
-            child: const Text('Resend Code', style: TextStyle(fontSize: 18)),
+            builder: (context, state) {
+              if (state is ResendOtpLoadingState) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                return TextButton(
+                  onPressed: () {
+                    widget.onResend();
+                  },
+                  child: const Text(
+                    'Resend Code',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                );
+              }
+            },
           ),
 
         const SizedBox(height: 10),

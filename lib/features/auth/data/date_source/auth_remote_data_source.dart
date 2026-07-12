@@ -75,4 +75,13 @@ class AuthRemoteDataSource {
 
     return MessageResponseModel(message: response.data);
   }
+
+  Future<MessageResponseModel> resendOtp({required String email}) async {
+    final response = await DioHelper.post(
+      url: "auth/resend-otp",
+      data: {"email": email},
+    );
+
+    return MessageResponseModel(message: response.data.toString());
+  }
 }

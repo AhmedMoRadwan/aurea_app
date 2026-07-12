@@ -66,7 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final result = await authRepo.forgotPassword(email: email);
 
-      emit(AuthSuccessState(result));
+      emit(ForgetSuccessState(msg: result));
     } on ApiException catch (e) {
       emit(AuthErrorState(errorMessage: e.message));
     } catch (e) {
@@ -81,7 +81,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final result = await authRepo.validateOtp(otp: otp, email: email);
 
-      emit(AuthSuccessState(result));
+      emit(OTPSuccessState(msg: result));
     } on ApiException catch (e) {
       emit(AuthErrorState(errorMessage: e.message));
     } catch (e) {
@@ -104,11 +104,25 @@ class AuthCubit extends Cubit<AuthState> {
         newPassword: newPassword,
       );
 
-      emit(AuthSuccessState(result));
+      emit(NewPassSuccessState(msg: result));
     } on ApiException catch (e) {
       emit(AuthErrorState(errorMessage: e.message));
     } catch (e) {
       emit(AuthErrorState(errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> resendOtp({required String email}) async {
+    emit(ResendOtpLoadingState());
+
+    try {
+      final result = await authRepo.resendOtp(email: email);
+
+      emit(ResendOtpSuccessState(msg: result));
+    } on ApiException catch (e) {
+      emit(ResendOtpFailureState(errorMessage: e.message));
+    } catch (e) {
+      emit(ResendOtpFailureState(errorMessage: e.toString()));
     }
   }
 }

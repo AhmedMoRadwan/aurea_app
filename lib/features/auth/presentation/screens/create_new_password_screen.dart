@@ -87,7 +87,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                               backgroundColor: Colors.red,
                             ),
                           );
-                        } else if (state is AuthSuccessState) {
+                        } else if (state is NewPassSuccessState) {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -100,7 +100,10 @@ class CreateNewPasswordScreen extends StatelessWidget {
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text("Password Reset Successful"),
+                              content: Text(
+                                state.msg.message,
+                                // " Password has been reset successfully."
+                              ),
                               backgroundColor: Colors.green,
                             ),
                           );
