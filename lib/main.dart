@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:nti_ecommerce_team4/core/network/dio_helper.dart';
 import 'package:nti_ecommerce_team4/core/theme/theme_provider.dart';
 import 'package:nti_ecommerce_team4/core/theme/app_theme.dart';
+import 'package:nti_ecommerce_team4/features/auth/presentation/screens/login_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:nti_ecommerce_team4/features/splash/presentation/screens/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  DioHelper.init();
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
@@ -24,7 +29,7 @@ class AureaApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeProvider.themeMode, // ده اللي بيبدّل تلقائي
-      home: const SplashScreen(),
+      home: const LoginScreen(),
     );
   }
 }

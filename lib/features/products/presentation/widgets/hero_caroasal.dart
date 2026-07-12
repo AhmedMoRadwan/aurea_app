@@ -157,7 +157,7 @@ class _HeroCarouselState extends State<HeroCarousel> {
                     decoration: BoxDecoration(
                       color: active
                           ? context.goldPale
-                          : Colors.white.withOpacity(0.45),
+                          : Colors.white.withValues(alpha: 0.45),
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
