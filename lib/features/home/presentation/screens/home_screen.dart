@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey collectionsKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +93,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(20),
                   child: BlocProvider(
                     create: (context) => OffersCubit()..getOffers(),
-                    child: OfferSection(),
+                    child: OfferSection(
+                      onShopNow: () {
+                        Scrollable.ensureVisible(
+                          collectionsKey.currentContext!,
+                          duration: const Duration(milliseconds: 600),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
                   ),
                 ),
 
@@ -133,6 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     BlocProvider(
                       create: (context) => ProductsCubit()..getProducts(),
+                      key: collectionsKey,
                       child: AllProductGridView(),
                     ),
                   ],

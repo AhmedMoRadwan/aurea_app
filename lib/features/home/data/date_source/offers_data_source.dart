@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:nti_ecommerce_team4/core/network/token_manager.dart';
 import 'package:nti_ecommerce_team4/features/home/data/models/offers_model.dart';
 
 class OffersDataSource {
@@ -9,8 +10,15 @@ class OffersDataSource {
   Future<List<OffersModel>> getOffer() async {
 
      try {
+
+      final token = await TokenManager.getToken();
       final response = await dio.get(
         "https://accessories-eshop.runasp.net/api/offers",
+         options: Options(
+        headers: {
+          "Authorization": "Bearer $token"
+        }
+      )
       );
 
       final List data = response.data["offers"]["items"];

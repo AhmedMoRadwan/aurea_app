@@ -12,7 +12,7 @@ Future<List<CategoriesModel>> getCategories() async {
   try {
 
     final token = await TokenManager.getToken();
-    log("token is : $token");
+    // log("token is : $token");
     final response = await dio.get(
       "https://accessories-eshop.runasp.net/api/categories",
       options: Options(
@@ -22,7 +22,7 @@ Future<List<CategoriesModel>> getCategories() async {
       )
     );
 
-    final List data =response.data[0]["categories"];
+    final List data =response.data["categories"];
 
     return data
         .map((e) => CategoriesModel.fromJson(e))

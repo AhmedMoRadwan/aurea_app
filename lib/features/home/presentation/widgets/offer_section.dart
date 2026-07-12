@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nti_ecommerce_team4/core/theme/themes.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/cubits/offers_cubit/offers_cubit.dart';
 import 'package:nti_ecommerce_team4/features/home/presentation/cubits/offers_cubit/offers_states.dart';
 
 class OfferSection extends StatelessWidget {
-  const OfferSection({super.key});
+  const OfferSection({super.key,required this.onShopNow});
+  final VoidCallback onShopNow;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,15 @@ class OfferSection extends StatelessWidget {
                       offer.coverul,
                       fit: BoxFit.cover,
                       width: double.infinity,
-                      height: 300,
+                      // height: 300,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          "assets/images/beso.jpg",
+                          width: double.infinity,
+                          // height: 300,
+                          fit: BoxFit.cover,
+                        );
+                      },
                     ),
 
                     Positioned.fill(
@@ -79,10 +87,10 @@ class OfferSection extends StatelessWidget {
                             ),
                           ),
 
-                          SizedBox(height: 5,),
+                          SizedBox(height: 5),
 
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: onShopNow,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xffD4AF37),
                               padding: EdgeInsets.symmetric(
