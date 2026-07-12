@@ -1,3 +1,46 @@
+// class ApiErrorModel {
+//   final int statusCode;
+//   final String message;
+//   final Map<String, List<String>>? errors;
+
+//   ApiErrorModel({required this.statusCode, required this.message, this.errors});
+
+//   factory ApiErrorModel.fromJson(Map<String, dynamic> json) {
+//     return ApiErrorModel(
+//       statusCode: json["statusCode"] ?? 0,
+//       message: json["message"] ?? "",
+//       errors: json["errors"] != null
+//           ? Map<String, List<String>>.from(
+//               json["errors"].map(
+//                 (key, value) => MapEntry(key, List<String>.from(value)),
+//               ),
+//             )
+//           : null,
+//     );
+//   }
+
+//   String get errorMessage {
+//     if (errors != null && errors!.isNotEmpty) {
+//       // هيرجع أول error موجود
+//       final firstErrorList = errors!.values.first;
+
+//       if (firstErrorList.isNotEmpty) {
+//         return firstErrorList.first;
+//       }
+//     }
+
+//     return message;
+//   }
+
+//   List<String> get allErrors {
+//     if (errors != null && errors!.isNotEmpty) {
+//       return errors!.values.expand((e) => e).toList();
+//     }
+
+//     return [message];
+//   }
+// }
+
 class ApiErrorModel {
   final int statusCode;
   final String message;
@@ -13,14 +56,22 @@ class ApiErrorModel {
     );
   }
 
-  String get firstErrorMessage {
+  String get errorMessage {
     if (errors != null && errors!.isNotEmpty) {
-      final firstKey = errors!.keys.first;
+      // generalErrors
+      if (errors!.containsKey("generalErrors")) {
+        final generalErrors = errors!["generalErrors"];
 
-      final messages = errors![firstKey];
+        if (generalErrors is List && generalErrors.isNotEmpty) {
+          return generalErrors.first.toString();
+        }
+      }
 
-      if (messages is List && messages.isNotEmpty) {
-        return messages.first;
+      // field errors
+      final firstError = errors!.values.first;
+
+      if (firstError is List && firstError.isNotEmpty) {
+        return firstError.first.toString();
       }
     }
 
