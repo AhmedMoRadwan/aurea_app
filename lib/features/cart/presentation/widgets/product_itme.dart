@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductItem extends StatelessWidget {
   final String title;
   final String subtitle;
   final String price;
   final String imageUrl;
+  final VoidCallback? onDelete;
 
   const ProductItem({
     super.key,
@@ -13,6 +15,7 @@ class ProductItem extends StatelessWidget {
     required this.subtitle,
     required this.price,
     required this.imageUrl,
+    this.onDelete,
   });
 
   @override
@@ -28,12 +31,36 @@ class ProductItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                imageUrl,
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+              child: imageUrl.startsWith('http')
+                  ? CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        height: 200,
+                        color: Colors.grey[200],
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        height: 200,
+                        color: Colors.grey[200],
+                        child: const Icon(Icons.error),
+                      ),
+                    )
+                  : Image.asset(
+                      imageUrl,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        height: 200,
+                        color: Colors.grey[200],
+                        child: const Icon(Icons.image_not_supported),
+                      ),
+                    ),
             ),
 
             const SizedBox(height: 10),
@@ -41,11 +68,15 @@ class ProductItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Text(
@@ -61,7 +92,12 @@ class ProductItem extends StatelessWidget {
 
             const SizedBox(height: 8),
 
-            Text(subtitle, style: const TextStyle(fontSize: 14)),
+            Text(
+              subtitle,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 14),
+            ),
 
             const SizedBox(height: 10),
 
@@ -75,7 +111,6 @@ class ProductItem extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      // color: Colors.amber.shade50,
                       border: Border.all(
                         color: Colors.amber.shade100,
                         width: 1,
@@ -105,9 +140,12 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Gap(70),
+                const Gap(70),
 
-                IconButton(icon: const Icon(Icons.close), onPressed: () {}),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: onDelete,
+                ),
               ],
             ),
           ],
