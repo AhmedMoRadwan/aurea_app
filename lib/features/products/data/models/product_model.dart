@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class ProductListResponse {
   final List<ProductItem> items;
   final int page;
@@ -38,11 +40,11 @@ class ProductItem {
   final String arabicDescription;
   final String coverPictureUrl;
   final List<String> productPictures;
-  final int price;
+  final double price;
   final int stock;
-  final int weight;
+  final double weight;
   final String color;
-  final int rating;
+  final double rating;
   final int reviewsCount;
   final int discountPercentage;
   final String sellerId;
@@ -72,19 +74,19 @@ class ProductItem {
     return ProductItem(
       id: json['id']?.toString() ?? "",
       productCode: json['productCode']?.toString() ?? "",
-      name: json['name'] ?? "Unknown",
+      name: json['name'] ?? json['productName'] ?? "No Name",
       description: json['description'] ?? "",
-      arabicName: json['arabicName'] ?? "",
-      arabicDescription: json['arabicDescription'] ?? "",
-      coverPictureUrl: json['coverPictureUrl'] ?? "",
+      arabicName: json['arabicName'] ?? json['arabic_name'] ?? json['nameAr'] ?? "",
+      arabicDescription: json['arabicDescription'] ?? json['arabic_description'] ?? json['descriptionAr'] ?? "",
+      coverPictureUrl: json['coverPictureUrl'] ?? json['cover_image'] ?? "",
       productPictures: json['productPictures'] != null 
           ? List<String>.from(json['productPictures']) 
           : [],
-      price: (json['price'] as num? ?? 0).toInt(),
+      price: (json['price'] as num? ?? 0).toDouble(),
       stock: (json['stock'] as num? ?? 0).toInt(),
-      weight: (json['weight'] as num? ?? 0).toInt(),
+      weight: (json['weight'] as num? ?? 0).toDouble(),
       color: json['color']?.toString() ?? "",
-      rating: (json['rating'] as num? ?? 0).toInt(),
+      rating: (json['rating'] as num? ?? 0).toDouble(),
       reviewsCount: (json['reviewsCount'] as num? ?? 0).toInt(),
       discountPercentage: (json['discountPercentage'] as num? ?? 0).toInt(),
       sellerId: json['sellerId']?.toString() ?? "",

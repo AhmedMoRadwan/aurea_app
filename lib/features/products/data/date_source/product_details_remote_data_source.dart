@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:dio/dio.dart';
 import '../../../../core/network/dio_helper.dart';
 import '../models/product_model.dart';
 import '../models/review_model.dart';
@@ -8,8 +7,9 @@ class ProductDetailsRemoteDataSource {
   // Required task: get product by id
   Future<ProductItem> getProductDetails(String productId) async {
     try {
-      final response = await DioHelper.get(url: "products/$productId");
-      log("Product details response: ${response.data}");
+      String id  ="6f7e046d-94b3-4ba4-9f00-6014e4209014";
+      final response = await DioHelper.get(url: "products/$id");
+      log("Product details response: ${response.data.toString()}");
       return ProductItem.fromJson(response.data);
     } catch (e) {
       log("Error fetching product details: $e");
@@ -17,12 +17,12 @@ class ProductDetailsRemoteDataSource {
     }
   }
 
-  // Required task: get reviews
   Future<ReviewResponse> getReviews(String productId) async {
     try {
+      String id  ="6f7e046d-94b3-4ba4-9f00-6014e4209014";
       final response = await DioHelper.get(
-        url: "reviews/$productId",
-        queryParameters: {"page": 1, "limit": 10},
+        url: "reviews/$id",
+        //queryParameters: {"page": 1, "pageSize": 10},
       );
       return ReviewResponse.fromJson(response.data);
     } catch (e) {

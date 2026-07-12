@@ -15,3 +15,9 @@ final class CartError extends CartState {
   final String errorMessage;
   CartError({required this.errorMessage});
 }
+
+final class AddToCartLoading extends CartState {}
+final class AddToCartSuccess extends CartState {
+  final String message;
+  AddToCartSuccess({required this.message});
+}
